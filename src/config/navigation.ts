@@ -44,8 +44,8 @@ export const footerNav: NavGroup[] = [
     title: "Resources",
     items: [
       { title: "Blog", href: "/blog" },
-      { title: "Documentation", href: "https://docs.veltro.io", external: true },
-      { title: "API Reference", href: "https://docs.veltro.io/api", external: true },
+      { title: "Documentation", href: "https://docs.getveltro.com", external: true },
+      { title: "API Reference", href: "https://docs.getveltro.com/api", external: true },
       { title: "Partners", href: "/partners" },
       { title: "Demo", href: "/demo" },
     ],

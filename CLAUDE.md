@@ -1,6 +1,6 @@
 # CLAUDE.md — Veltro Website
 
-> Marketing website, blog, and customer portal for veltro.io
+> Marketing website, blog, and customer portal for getveltro.com
 
 ---
 

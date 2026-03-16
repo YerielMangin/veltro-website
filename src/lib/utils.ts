@@ -14,7 +14,7 @@ export function formatDate(date: string | Date): string {
 }
 
 export function absoluteUrl(path: string): string {
-  return `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://veltro.io"}${path}`;
+  return `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://getveltro.com"}${path}`;
 }
 
 export function slugify(text: string): string {

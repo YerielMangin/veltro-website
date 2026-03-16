@@ -19,7 +19,7 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://veltro.io"),
+  metadataBase: new URL("https://getveltro.com"),
   title: {
     default: "Veltro — Velocity + Control for Maintenance Management",
     template: "%s | Veltro",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://veltro.io",
+    url: "https://getveltro.com",
     siteName: "Veltro",
     title: "Veltro — Velocity + Control for Maintenance Management",
     description:

@@ -3,10 +3,10 @@ export const siteConfig = {
   tagline: "Velocity + Control",
   description:
     "The modern CMMS platform that gives maintenance teams velocity without losing control.",
-  url: "https://veltro.io",
-  appUrl: "https://app.veltro.io",
-  docsUrl: "https://docs.veltro.io",
-  ogImage: "https://veltro.io/og/default.png",
+  url: "https://getveltro.com",
+  appUrl: "https://app.getveltro.com",
+  docsUrl: "https://docs.getveltro.com",
+  ogImage: "https://getveltro.com/og/default.png",
 
   links: {
     twitter: "https://twitter.com/veltroio",
@@ -17,9 +17,9 @@ export const siteConfig = {
   },
 
   support: {
-    email: "support@veltro.io",
-    sales: "sales@veltro.io",
-    status: "https://status.veltro.io",
+    email: "support@getveltro.com",
+    sales: "sales@getveltro.com",
+    status: "https://status.getveltro.com",
   },
 
   legal: {

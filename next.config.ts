@@ -40,8 +40,8 @@ const nextConfig: NextConfig = {
 
   async redirects() {
     return [
-      { source: "/app", destination: "https://app.veltro.io", permanent: false },
-      { source: "/dashboard", destination: "https://app.veltro.io", permanent: false },
+      { source: "/app", destination: "https://app.getveltro.com", permanent: false },
+      { source: "/dashboard", destination: "https://app.getveltro.com", permanent: false },
     ];
   },
 };

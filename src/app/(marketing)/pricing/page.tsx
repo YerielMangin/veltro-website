@@ -94,8 +94,8 @@ export default function PricingPage() {
         <h2 className="text-2xl font-bold text-foreground">Questions?</h2>
         <p className="mt-2 text-muted-foreground">
           Reach out to our sales team at{" "}
-          <a href="mailto:sales@veltro.io" className="text-primary hover:underline">
-            sales@veltro.io
+          <a href="mailto:sales@getveltro.com" className="text-primary hover:underline">
+            sales@getveltro.com
           </a>
         </p>
       </div>
