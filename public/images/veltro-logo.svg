@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 535 534">
+  <g id="icon-main-diagonal">
+    <path
+      id="icon-main-diagonal-border"
+      d="M449 88L90 447"
+      fill="none"
+      stroke="#FFFFFF"
+      stroke-linecap="round"
+      stroke-width="82"
+    />
+    <path
+      id="icon-main-diagonal-fill"
+      d="M449 88L90 447"
+      fill="none"
+      stroke="#000000"
+      stroke-linecap="round"
+      stroke-width="78"
+    />
+  </g>
+
+  <g id="icon-bent">
+    <path
+      id="icon-bent-border"
+      d="M90 88L180 178L90 268"
+      fill="none"
+      stroke="#FFFFFF"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="82"
+    />
+    <path
+      id="icon-bent-fill"
+      d="M90 88L180 178L90 268"
+      fill="none"
+      stroke="#000000"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="78"
+    />
+  </g>
+
+  <g id="icon-secondary-diagonal">
+    <path
+      id="icon-secondary-diagonal-border"
+      d="M450 259L249 460"
+      fill="none"
+      stroke="#FFFFFF"
+      stroke-linecap="round"
+      stroke-width="82"
+    />
+    <path
+      id="icon-secondary-diagonal-fill"
+      d="M450 259L249 460"
+      fill="none"
+      stroke="#000000"
+      stroke-linecap="round"
+      stroke-width="78"
+    />
+  </g>
+
+  <g id="icon-dot-diagonal">
+    <path
+      id="icon-dot-diagonal-border"
+      d="M451 432L434 449"
+      fill="none"
+      stroke="#FFFFFF"
+      stroke-linecap="round"
+      stroke-width="82"
+    />
+    <path
+      id="icon-dot-diagonal-fill"
+      d="M451 432L434 449"
+      fill="none"
+      stroke="#000000"
+      stroke-linecap="round"
+      stroke-width="78"
+    />
+  </g>
+</svg>

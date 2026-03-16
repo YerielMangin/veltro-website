@@ -39,6 +39,12 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Veltro" }],
   creator: "Veltro",
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+    apple: "/images/veltro-logo-thumbnail.svg",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
