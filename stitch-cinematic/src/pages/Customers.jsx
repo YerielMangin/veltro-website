@@ -39,7 +39,7 @@ export default function Customers() {
   ]
 
   return (
-    <div className="pt-20">
+    <div className="pt-24">
       {/* Hero */}
       <header className="bg-tertiary flex flex-col items-center justify-center text-center px-5 md:px-8 py-24 md:py-32 relative overflow-hidden">
         <div className="relative z-10 max-w-4xl mx-auto">

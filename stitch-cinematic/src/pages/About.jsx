@@ -35,7 +35,7 @@ export default function About() {
   return (
     <div className="bg-surface text-on-surface">
       {/* Hero */}
-      <header className="relative min-h-[60vh] flex items-center justify-center bg-primary overflow-hidden">
+      <header className="relative min-h-[60vh] flex items-center justify-center bg-primary overflow-hidden pt-24">
         <BlurOrb color="bg-secondary" size="w-[800px] h-[800px]" className="opacity-20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
         <div className="relative z-10 text-center px-6 max-w-4xl">
           <ScrollReveal>

@@ -59,7 +59,7 @@ export default function Integrations() {
       : integrations.filter((i) => i.category === activeCategory)
 
   return (
-    <div className="pt-20">
+    <div className="pt-24">
       {/* Hero */}
       <header className="bg-surface flex flex-col items-center justify-center text-center px-5 md:px-8 py-24 md:py-32">
         <div className="mb-4">

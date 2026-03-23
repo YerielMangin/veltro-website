@@ -38,7 +38,7 @@ const jobs = [
 
 export default function Careers() {
   return (
-    <div className="pt-20">
+    <div className="pt-24">
       {/* Hero */}
       <header className="relative min-h-[80vh] w-full overflow-hidden flex items-end pb-16 bg-gradient-to-t from-primary via-primary/60 to-primary-container">
         <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/40 to-transparent pointer-events-none" />

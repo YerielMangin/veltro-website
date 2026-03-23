@@ -33,7 +33,7 @@ const practices = [
 
 export default function Security() {
   return (
-    <div className="pt-20">
+    <div className="pt-24">
       {/* Hero */}
       <header className="bg-tertiary flex flex-col items-center justify-center text-center px-5 md:px-8 py-24 md:py-32 relative overflow-hidden">
         <BlurOrb color="bg-primary-container" className="top-0 left-1/4 opacity-10" />
