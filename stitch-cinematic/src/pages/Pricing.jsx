@@ -26,7 +26,7 @@ const faqItems = [
   },
 ]
 
-function PricingCard({ tier, subtitle, headline, features, cta, highlight }) {
+function PricingCard({ tier, subtitle, price, period, features, cta, highlight }) {
   return (
     <div
       className={[
@@ -46,9 +46,16 @@ function PricingCard({ tier, subtitle, headline, features, cta, highlight }) {
         {tier}
       </span>
       <p className={`text-sm mb-2 ${highlight ? 'text-white/70' : 'text-primary/70'}`}>{subtitle}</p>
-      <h3 className={`font-display italic text-3xl leading-tight mb-8 ${highlight ? 'text-white' : 'text-primary'}`}>
-        {headline}
-      </h3>
+      <div className="mb-8">
+        <span className={`font-display italic text-5xl ${highlight ? 'text-white' : 'text-primary'}`}>
+          {price}
+        </span>
+        {period && (
+          <span className={`font-label text-sm ml-1 ${highlight ? 'text-white/50' : 'text-primary/50'}`}>
+            {period}
+          </span>
+        )}
+      </div>
 
       <ul className="space-y-4 mb-12 flex-grow">
         {features.map((f, i) => (
@@ -101,7 +108,8 @@ export default function Pricing() {
           <PricingCard
             tier="STARTER"
             subtitle="Small teams getting organized"
-            headline="Get your team on the same page"
+            price="$49"
+            period="/ mo"
             features={[
               { label: 'Work Orders' },
               { label: 'Assets & Locations' },
@@ -115,7 +123,8 @@ export default function Pricing() {
           <PricingCard
             tier="OPERATIONS"
             subtitle="Growing operations that need visibility"
-            headline="See everything. Control everything."
+            price="$149"
+            period="/ mo"
             highlight
             features={[
               { label: 'Everything in Starter', icon: 'stars', fill: true },
@@ -133,7 +142,7 @@ export default function Pricing() {
           <PricingCard
             tier="ENTERPRISE"
             subtitle="Multi-site orgs with compliance needs"
-            headline="Scale with confidence"
+            price="Custom"
             features={[
               { label: 'Everything in Operations', icon: 'layers', fill: true },
               { label: 'Multi-site management' },
