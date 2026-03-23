@@ -16,8 +16,8 @@ Create a standalone comparison site at `stitch-cinematic/` using the Stitch HTML
 |-------|-----------|---------|
 | Build | Vite | 5.x |
 | UI | React | 19.x |
-| Routing | React Router | 7.x |
-| Styling | Tailwind CSS | 3.4.x |
+| Routing | React Router | 6.x (library mode) |
+| Styling | Tailwind CSS | 3.4.x (intentionally v3, not v4 — matches Stitch HTML class conventions and antigravity-cinematic) |
 | Animation | GSAP + ScrollTrigger | 3.12.x |
 | Smooth Scroll | Lenis | 1.x |
 | Icons | Material Symbols (Google Fonts) + Lucide React | latest |
@@ -87,7 +87,8 @@ From the Stitch project's Material Design 3 palette:
 | primary | `#182a21` | Dark Moss — deep backgrounds, authoritative text |
 | primary-container | `#2e4036` | Moss container — section backgrounds |
 | secondary | `#a53c19` | Clay base — CTA hover states |
-| secondary-container | `#cc5833` | Clay accent — buttons, highlights, labels |
+| secondary-container | `#ff7e55` | Bright clay — hover states, container accents |
+| clay | `#cc5833` | Clay accent — buttons, highlights, labels (convenience alias) |
 | surface | `#fbf9f2` | Cream — default page background |
 | surface-container | `#f0eee7` | Cream container — card backgrounds |
 | surface-container-low | `#f6f4ec` | Light card sections |
@@ -109,20 +110,25 @@ From the Stitch project's Material Design 3 palette:
 | Body | Outfit | 300-500 | Paragraphs, descriptions |
 | Label/Data | IBM Plex Mono | 400-500 | Uppercase labels, timestamps, code, step numbers |
 
-Tailwind config:
+Tailwind config (matching Stitch HTML naming):
 ```js
 fontFamily: {
-  sans: ['"Plus Jakarta Sans"', 'Outfit', 'sans-serif'],
-  drama: ['"Cormorant Garamond"', 'serif'],
+  headline: ['"Plus Jakarta Sans"', 'sans-serif'],
+  display: ['"Cormorant Garamond"', 'serif'],
   body: ['"Outfit"', 'sans-serif'],
+  label: ['"IBM Plex Mono"', 'monospace'],
+  // Aliases for convenience
+  sans: ['"Plus Jakarta Sans"', 'Outfit', 'sans-serif'],
   mono: ['"IBM Plex Mono"', 'monospace'],
 }
 ```
 
+**Note:** JSX (not TSX) is an intentional choice for this prototype — optimizing for build speed, not type safety.
+
 ### 4.3 Border Radius
 
 - Buttons: `rounded-full` (pill shape)
-- Cards: `rounded-[2rem]` to `rounded-[3rem]`
+- Cards: `rounded-xl` (mapped to `3rem` in Tailwind config, matching Stitch `borderRadius.xl`)
 - Inputs: `rounded-[1.5rem]`
 - Footer top: `rounded-t-[4rem]`
 - **No sharp corners anywhere**
@@ -139,6 +145,25 @@ No `1px solid` borders for sectioning. Boundaries defined through:
 - Background color shifts (surface → surface-container)
 - Spacing
 - Subtle outline-variant at 10-20% opacity only where accessibility requires it
+
+---
+
+## 4.6 Image Handling
+
+- Download all images referenced in Stitch HTML (Google-hosted URLs) into `public/images/`
+- Use `loading="lazy"` on all non-hero images
+- Hero images: preloaded, full-width, `object-cover`
+- Responsive: use CSS `max-width: 100%` and appropriate `aspect-ratio` — no `srcSet` needed for this prototype
+- Placeholder approach: use solid surface-container backgrounds as fallback while images load
+- All images get `rounded-xl` or `rounded-[2rem]` to match card system
+
+## 4.7 Google Fonts Loading
+
+Load via `<link>` tags in `index.html` with `display=swap`:
+```html
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200..800&family=Cormorant+Garamond:ital,wght@1,300..700&family=Outfit:wght@300..500&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+```
 
 ---
 
@@ -252,9 +277,12 @@ All routes wrapped by `<Layout>` providing Navbar, Footer, and NoiseOverlay.
 
 **Sections:**
 1. **Hero** — 100dvh, background image with gradient overlay, content bottom-left. Two-line headline: sans bold line 1 + drama italic line 2 ("Rhythm.") in clay. CTA button. Bouncing scroll indicator.
-2. **Features** — "How it works" heading. 3 interactive micro-UI cards (DiagnosticShuffler, TelemetryTypewriter, CursorScheduler) in glass-card containers.
+2. **Features** — "How it works" heading. 3 animated micro-UI cards in glass-card containers (`bg-white/40 backdrop-blur-md border-white/20 rounded-3xl`):
+   - **DiagnosticShuffler**: 3 overlapping pill cards that cycle every 3s via `array.unshift(array.pop())`. Stack offsets: index 0 = full opacity/scale, index 1 = 40% opacity/90% scale/translate-y-12, index 2 = 20% opacity/75% scale/translate-y-24.
+   - **TelemetryTypewriter**: Monospace character-by-character text reveal at 50ms intervals, looping. Pulsing "Live Feed" dot, blinking cursor.
+   - **CursorScheduler**: Weekly grid (S-S) with GSAP-animated arrow cursor that moves between cells, "clicks" (scale 0.8), moves to "Save" button, fades, repeats.
 3. **Philosophy** — Dark charcoal bg with parallax texture image. Two contrasting statements: neutral small text vs. drama italic large text with clay highlights. Word-by-word ScrollTrigger reveal.
-4. **Protocol** — 3 sticky-stacking full-screen cards (Capture/Direct/Reflect). Each pinned with ScrollTrigger. Previous card blurs/scales/fades as next overlaps. Desktop only — mobile uses standard stacked sections with scroll reveal.
+4. **Protocol** — 3 sticky-stacking cards (Capture/Direct/Reflect), each `h-[716px]`. Cards use sticky positioning with incremental `top` offsets (153px, 204px, 256px) creating a stacking effect on scroll. GSAP ScrollTrigger with `scrub: true` applies to each card: as the next card scrolls in, the previous card gets `scale: 1 - progress * 0.1`, `filter: blur(progress * 20px)`, `opacity: 1 - progress * 0.5`. Desktop only (lg+) — mobile uses standard stacked sections with scroll reveal.
 5. **CTA** — Cream bg, drama italic headline with clay accent, large moss CTA button.
 
 **Responsive:** Hero text scales per 5.3. Feature cards stack vertically on phone. Protocol simplified on mobile.
@@ -263,7 +291,7 @@ All routes wrapped by `<Layout>` providing Navbar, Footer, and NoiseOverlay.
 
 **Sections:**
 1. **Hero** — Dark tertiary bg with blur orbs. Drama italic headline.
-2. **Connected Flow** — Horizontal scrollable card carousel (7 steps: Inspection → Finding → Work Order → Assignment → Resolution → Dashboard). Cards linked by pulsing arrow icons. Snap scroll on mobile.
+2. **Connected Flow** — Horizontal scrollable card carousel (6 steps: Inspection → Finding → Work Order → Assignment → Resolution → Dashboard). Cards linked by pulsing arrow icons. Snap scroll on mobile.
 3. **Feature Sections** — 4 alternating image+text sections with monospace step numbers (01-04) and clay-colored labels. Grid reverses direction on alternate sections.
 
 **Responsive:** Carousel horizontal scroll with snap on all sizes. Alternating sections stack on phone.
@@ -317,7 +345,7 @@ All routes wrapped by `<Layout>` providing Navbar, Footer, and NoiseOverlay.
 4. **Related Posts** — 3-column card grid.
 5. **CTA Banner** — primary-container bg with blur orb decoration.
 
-Content is hardcoded to match the Stitch template (predictive maintenance topic).
+Content is hardcoded to match the Stitch template (predictive maintenance topic). All content, pricing details, FAQ items, and feature lists should be extracted directly from the Stitch HTML files rather than invented.
 
 **Responsive:** TOC hidden on tablet/phone. Article full width. Related posts: 2-col tablet, 1-col phone.
 
@@ -380,7 +408,7 @@ Content is hardcoded to match the Stitch template (predictive maintenance topic)
 ### 8.1 Navbar
 - Fixed centered pill (`rounded-full`)
 - Transparent at top → `bg-surface/60 backdrop-blur-xl` on scroll (50px threshold)
-- Desktop: Logo + nav links (Features, Pricing, About, Blog, Contact) + "Start Trial" CTA
+- Desktop: Logo + nav links (Features, Pricing, Use Cases, Blog) + "Start Trial" CTA (matching Stitch source HTML)
 - Mobile: Logo + hamburger → full-screen overlay with staggered GSAP entrance
 - Active link: secondary color with border-b-2
 - All links: `scale(1.03)` on hover
@@ -393,7 +421,7 @@ Content is hardcoded to match the Stitch template (predictive maintenance topic)
 - Responsive: 2-col on tablet, 1-col on phone
 
 ### 8.3 NoiseOverlay
-- Fixed SVG with `feTurbulence` (baseFrequency 0.80, numOctaves 4)
+- Fixed SVG with `feTurbulence` (baseFrequency 0.65, numOctaves 3) — matching Stitch source
 - `opacity-[0.05]`, `mix-blend-soft-light`
 - `pointer-events-none`, z-50
 
@@ -404,10 +432,11 @@ Content is hardcoded to match the Stitch template (predictive maintenance topic)
 - Touch: active state with slight scale down
 
 ### 8.5 ScrollReveal
-- GSAP wrapper: `y: 40, opacity: 0, duration: 0.8`
+- GSAP wrapper: `y: 40, duration: 0.8` (translate-only entrance, no opacity fade on scroll entry per CLAUDE.md convention)
 - ScrollTrigger: `start: "top 75%"`
 - Configurable: delay, stagger, direction
 - Respects `prefers-reduced-motion`
+- Note: Opacity fading is only used for scroll *exit* effects (Protocol section overlap) and page-load hero entrances, not for general scroll-entry reveals
 
 ---
 
@@ -441,7 +470,7 @@ React Router navigation triggers `window.scrollTo(0, 0)` on route change via a `
 - No auth/Supabase
 - No analytics
 - No SSR/SSG — client-side SPA only
-- No dark mode toggle — fixed light theme with dark sections as designed
+- No dark mode toggle — fixed light surface theme with dark accent sections as designed (diverges from CLAUDE.md's "dark theme default" since Stitch designs use light cream as the base)
 
 ---
 
