@@ -19,40 +19,42 @@ export function Footer() {
                 Veltro
               </span>
             </div>
-            <span className="mt-1 block font-display text-sm italic text-cream/30">
+            <span className="mt-1 block font-display text-sm italic text-cream/50">
               Velocity + Control
             </span>
-            <p className="mt-4 max-w-xs font-body text-sm text-cream/40">
+            <p className="mt-4 max-w-xs font-body text-sm text-cream/60">
               Manage operations with speed, clarity, and control.
             </p>
           </div>
 
           {/* Link columns */}
-          {footerNav.map((group) => (
-            <div key={group.title} className="md:col-span-1">
-              <h4 className="mb-4 font-heading text-sm font-semibold uppercase tracking-wider text-cream/60">
-                {group.title}
-              </h4>
-              <ul className="space-y-3">
-                {group.items.map((item) => (
-                  <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      className="link-lift font-body text-sm text-cream/40 transition-colors hover:text-cream"
-                      {...(item.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                    >
-                      {item.title}
-                      {item.badge && (
-                        <span className="ml-2 rounded-full bg-clay/20 px-1.5 py-0.5 text-[10px] font-medium text-clay-200">
-                          {item.badge}
-                        </span>
-                      )}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          <nav aria-label="Footer navigation" className="contents">
+            {footerNav.map((group) => (
+              <div key={group.title} className="md:col-span-1">
+                <h4 className="mb-4 font-heading text-sm font-semibold uppercase tracking-wider text-cream/70">
+                  {group.title}
+                </h4>
+                <ul className="space-y-3">
+                  {group.items.map((item) => (
+                    <li key={item.href}>
+                      <Link
+                        href={item.href}
+                        className="link-lift font-body text-sm text-cream/60 transition-colors hover:text-cream"
+                        {...(item.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                      >
+                        {item.title}
+                        {item.badge && (
+                          <span className="ml-2 rounded-full bg-clay/20 px-1.5 py-0.5 text-[10px] font-medium text-clay-200">
+                            {item.badge}
+                          </span>
+                        )}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </nav>
         </div>
 
         {/* Newsletter */}
@@ -62,7 +64,7 @@ export function Footer() {
               <h3 className="font-heading text-base font-semibold text-cream">
                 Stay updated
               </h3>
-              <p className="mt-1 font-body text-sm text-cream/40">
+              <p className="mt-1 font-body text-sm text-cream/60">
                 Product updates, maintenance insights, and engineering tips.
               </p>
             </div>
@@ -72,7 +74,7 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-cream/10 pt-6 md:flex-row">
-          <span className="font-mono text-xs text-cream/30">
+          <span className="font-mono text-xs text-cream/50">
             &copy; {year} Veltro, Inc.
           </span>
           <div className="flex items-center gap-2">
@@ -82,13 +84,13 @@ export function Footer() {
             </span>
           </div>
           <div className="flex gap-6">
-            <Link href="/privacy" className="font-mono text-[11px] tracking-wider text-cream/30 transition-colors hover:text-cream">
+            <Link href="/privacy" className="font-mono text-xs py-1 tracking-wider text-cream/50 transition-colors hover:text-cream">
               Privacy
             </Link>
-            <Link href="/terms" className="font-mono text-[11px] tracking-wider text-cream/30 transition-colors hover:text-cream">
+            <Link href="/terms" className="font-mono text-xs py-1 tracking-wider text-cream/50 transition-colors hover:text-cream">
               Terms
             </Link>
-            <Link href="/cookies" className="font-mono text-[11px] tracking-wider text-cream/30 transition-colors hover:text-cream">
+            <Link href="/cookies" className="font-mono text-xs py-1 tracking-wider text-cream/50 transition-colors hover:text-cream">
               Cookies
             </Link>
           </div>
