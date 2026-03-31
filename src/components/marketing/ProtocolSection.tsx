@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ConcentricCircles } from "@/components/animations/ConcentricCircles";
 import { ScanningLaser } from "@/components/animations/ScanningLaser";
 import { PulsingWaveform } from "@/components/animations/PulsingWaveform";
+import { useReducedMotion } from "@/lib/useReducedMotion";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -38,9 +39,10 @@ const animations = [ConcentricCircles, ScanningLaser, PulsingWaveform];
 export function ProtocolSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const reducedMotion = useReducedMotion();
 
   useEffect(() => {
-    if (!sectionRef.current) return;
+    if (!sectionRef.current || reducedMotion) return;
     const ctx = gsap.context(() => {
       cardRefs.current.forEach((card, i) => {
         if (i < cards.length - 1 && card) {
@@ -53,9 +55,8 @@ export function ProtocolSection() {
             onUpdate: (self) => {
               const progress = self.progress;
               gsap.set(card, {
-                scale: 1 - progress * 0.1,
-                filter: `blur(${progress * 20}px)`,
-                opacity: 1 - progress * 0.5,
+                scale: 1 - progress * 0.08,
+                opacity: 1 - progress * 0.7,
               });
             },
           });
@@ -63,7 +64,7 @@ export function ProtocolSection() {
       });
     }, sectionRef.current);
     return () => ctx.revert();
-  }, []);
+  }, [reducedMotion]);
 
   return (
     <section id="protocol" ref={sectionRef} className="relative">
@@ -74,15 +75,15 @@ export function ProtocolSection() {
             key={card.step}
             ref={(el) => { cardRefs.current[i] = el; }}
             className={`sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden ${card.bg} ${card.text}`}
-            style={{ zIndex: i + 1 }}
+            style={{ zIndex: i + 1, willChange: "transform, opacity" }}
           >
-            <Animation />
+            {!reducedMotion && <Animation />}
             <div className="relative z-10 max-w-2xl px-6 text-center">
-              <span className="font-mono text-sm opacity-40">{card.step}</span>
+              <span className="font-mono text-sm opacity-50">{card.step}</span>
               <h3 className="mt-4 font-heading text-5xl font-bold tracking-tight md:text-6xl lg:text-7xl">
                 {card.title}
               </h3>
-              <p className="mx-auto mt-6 max-w-md font-body text-lg opacity-60 md:text-xl">
+              <p className="mx-auto mt-6 max-w-md font-body text-lg opacity-70 md:text-xl">
                 {card.description}
               </p>
             </div>

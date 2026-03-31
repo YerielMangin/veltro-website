@@ -2,15 +2,19 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { useReducedMotion } from "@/lib/useReducedMotion";
 
 export function ScanningLaser() {
   const ref = useRef<SVGSVGElement>(null);
   const lineRef = useRef<SVGLineElement>(null);
+  const reducedMotion = useReducedMotion();
 
   useEffect(() => {
-    if (!ref.current || !lineRef.current) return;
+    if (!ref.current || !lineRef.current || reducedMotion) return;
+
+    let tween: gsap.core.Tween;
     const ctx = gsap.context(() => {
-      gsap.to(lineRef.current, {
+      tween = gsap.to(lineRef.current, {
         attr: { y1: 380, y2: 380 },
         duration: 4,
         repeat: -1,
@@ -18,8 +22,26 @@ export function ScanningLaser() {
         ease: "power1.inOut",
       });
     }, ref.current);
-    return () => ctx.revert();
-  }, []);
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          tween?.resume();
+        } else {
+          tween?.pause();
+        }
+      },
+      { threshold: 0 }
+    );
+    observer.observe(ref.current);
+
+    return () => {
+      observer.disconnect();
+      ctx.revert();
+    };
+  }, [reducedMotion]);
+
+  if (reducedMotion) return null;
 
   const dots: React.ReactNode[] = [];
   for (let r = 0; r < 10; r++) {
@@ -50,7 +72,7 @@ export function ScanningLaser() {
         y1="20"
         x2="400"
         y2="20"
-        stroke="#CC5833"
+        stroke="#B84A28"
         strokeWidth="1"
         opacity="0.6"
       />

@@ -2,25 +2,50 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { useReducedMotion } from "@/lib/useReducedMotion";
 
 export function ConcentricCircles() {
   const ref = useRef<SVGSVGElement>(null);
+  const reducedMotion = useReducedMotion();
 
   useEffect(() => {
-    if (!ref.current) return;
+    if (!ref.current || reducedMotion) return;
+
+    const timelines: gsap.core.Tween[] = [];
     const ctx = gsap.context(() => {
       ref.current!.querySelectorAll("circle").forEach((c, i) => {
-        gsap.to(c, {
+        const tween = gsap.to(c, {
           rotation: 360 * (i % 2 === 0 ? 1 : -1),
           duration: 20 - i * 4,
           repeat: -1,
           ease: "none",
           transformOrigin: "50% 50%",
         });
+        timelines.push(tween);
       });
     }, ref.current);
-    return () => ctx.revert();
-  }, []);
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        timelines.forEach((tl) => {
+          if (entry.isIntersecting) {
+            tl.resume();
+          } else {
+            tl.pause();
+          }
+        });
+      },
+      { threshold: 0 }
+    );
+    observer.observe(ref.current);
+
+    return () => {
+      observer.disconnect();
+      ctx.revert();
+    };
+  }, [reducedMotion]);
+
+  if (reducedMotion) return null;
 
   return (
     <svg
