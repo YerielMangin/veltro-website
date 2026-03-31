@@ -75,7 +75,7 @@ export function ProtocolSection() {
             key={card.step}
             ref={(el) => { cardRefs.current[i] = el; }}
             className={`sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden ${card.bg} ${card.text}`}
-            style={{ zIndex: i + 1, willChange: "transform, opacity" }}
+            style={{ zIndex: i + 1, ...(!reducedMotion && { willChange: "transform, opacity" }) }}
           >
             {!reducedMotion && <Animation />}
             <div className="relative z-10 max-w-2xl px-6 text-center">
