@@ -57,22 +57,33 @@ export function Header() {
         </Link>
 
         {/* Desktop links */}
-        <div className="hidden items-center gap-6 md:flex">
-          {mainNav.slice(0, 3).map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={cn(
-                "link-lift font-body text-sm font-medium opacity-80 transition-opacity hover:opacity-100",
-                pathname === item.href && "opacity-100"
-              )}
-            >
-              {item.title}
-            </Link>
-          ))}
+        <div className="hidden items-center gap-5 md:flex">
+          {mainNav.map((item) => {
+            const isActive = item.href === "/"
+              ? pathname === "/"
+              : pathname === item.href || pathname.startsWith(item.href + "/");
+
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={cn(
+                  "link-lift relative pb-1 font-body text-sm transition-opacity hover:opacity-100",
+                  isActive
+                    ? "font-semibold opacity-100"
+                    : "font-medium opacity-70"
+                )}
+              >
+                {item.title}
+                {isActive && (
+                  <span className="absolute bottom-0 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-clay" />
+                )}
+              </Link>
+            );
+          })}
           <Link
             href="https://app.getveltro.com/#/login"
-            className="link-lift font-body text-sm font-medium opacity-80 transition-opacity hover:opacity-100"
+            className="link-lift font-body text-sm font-medium opacity-70 transition-opacity hover:opacity-100"
           >
             Login
           </Link>
