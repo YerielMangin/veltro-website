@@ -20,14 +20,14 @@
   /* Clay — burnt orange accent */
   --color-clay-50: #FCEEE9;
   --color-clay-100: #F9DDD3;
-  --color-clay-200: #F2BBA7;
-  --color-clay-300: #EC997B;
-  --color-clay-400: #E5774F;
-  --color-clay: #CC5833;
-  --color-clay-600: #A34629;
-  --color-clay-700: #7A351F;
-  --color-clay-800: #512314;
-  --color-clay-900: #29120A;
+  --color-clay-200: #F0B8A2;
+  --color-clay-300: #E2916E;
+  --color-clay-400: #D46A3A;
+  --color-clay: #B84A28;
+  --color-clay-600: #933B20;
+  --color-clay-700: #6E2C18;
+  --color-clay-800: #491E10;
+  --color-clay-900: #250F08;
 
   /* Cream — warm off-white */
   --color-cream-50: #FDFCFA;
@@ -49,8 +49,8 @@
   --color-muted: #E5E2D6;
   --color-muted-foreground: #6b6b6b;
   --color-border: #E5E2D6;
-  --color-ring: #CC5833;
-  --color-primary: #CC5833;
+  --color-ring: #B84A28;
+  --color-primary: #B84A28;
   --color-primary-foreground: #F2F0E9;
   --color-secondary: #2E4036;
   --color-secondary-foreground: #F2F0E9;
@@ -110,7 +110,7 @@
   --color-muted: #222222;
   --color-muted-foreground: #8a8a8a;
   --color-border: #333333;
-  --color-primary: #E5774F;
+  --color-primary: #D46A3A;
   --color-primary-foreground: #1A1A1A;
   --color-secondary: #2E4036;
   --color-secondary-foreground: #F2F0E9;
@@ -149,14 +149,35 @@
 /* ── Base ── */
 
 html {
-  scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
-  background-color: #CC5833;
+  background-color: #B84A28;
   color: #F2F0E9;
+}
+
+/* ── Accessibility ── */
+
+*:focus-visible {
+  outline: 2px solid var(--color-clay);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+html {
+  scroll-padding-top: 5rem;
 }
 
 /* ── Magnetic Button ── */
@@ -169,15 +190,15 @@ html {
   overflow: hidden;
   font-family: var(--font-heading);
   font-weight: 600;
-  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .btn-magnetic.w-full {
   display: flex;
 }
 
-.btn-magnetic:hover {
-  transform: scale(1.03);
+.btn-magnetic:active {
+  transform: scale(0.97);
 }
 
 .btn-magnetic .btn-bg {
@@ -185,35 +206,41 @@ html {
   inset: 0;
   border-radius: inherit;
   transform: translateY(100%);
-  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.btn-magnetic:hover .btn-bg {
-  transform: translateY(0);
+  transition: transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .btn-magnetic .btn-label {
   position: relative;
   z-index: 10;
-  transition: color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: color 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.btn-magnetic.btn-outline:hover .btn-label {
-  color: #F2F0E9;
-}
+@media (hover: hover) {
+  .btn-magnetic:hover {
+    transform: scale(1.03);
+  }
 
-.btn-magnetic.btn-outline-cream:hover .btn-label {
-  color: #F2F0E9;
+  .btn-magnetic:hover .btn-bg {
+    transform: translateY(0);
+  }
+
+  .btn-magnetic.btn-outline:hover .btn-label {
+    color: #F2F0E9;
+  }
+
+  .btn-magnetic.btn-outline-cream:hover .btn-label {
+    color: #F2F0E9;
+  }
+
+  .link-lift:hover {
+    transform: translateY(-1px);
+  }
 }
 
 /* ── Utility Classes ── */
 
 .link-lift {
   transition: transform 0.2s ease;
-}
-
-.link-lift:hover {
-  transform: translateY(-1px);
 }
 
 .text-balance {
