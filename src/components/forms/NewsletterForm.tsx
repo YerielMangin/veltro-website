@@ -1,0 +1,23 @@
+"use client";
+
+import { MagneticButton } from "@/components/ui/MagneticButton";
+
+function NewsletterForm() {
+  return (
+    <form
+      className="flex w-full gap-2 sm:w-auto"
+      onSubmit={(e) => e.preventDefault()}
+    >
+      <input
+        type="email"
+        placeholder="you@company.com"
+        className="h-10 w-full rounded-full border border-cream/20 bg-charcoal-300 px-4 font-body text-sm text-cream placeholder:text-cream/30 transition-all duration-300 focus:border-clay focus:outline-none focus:ring-2 focus:ring-clay/20 sm:w-64"
+      />
+      <MagneticButton type="submit" variant="clay" size="md">
+        Subscribe
+      </MagneticButton>
+    </form>
+  );
+}
+
+export { NewsletterForm };

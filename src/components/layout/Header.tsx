@@ -1,104 +1,131 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ChevronDown } from "lucide-react";
-import { VeltroWordmark } from "@/components/brand/VeltroWordmark";
-import { mainNav, featureNav } from "@/config/navigation";
-import { siteConfig } from "@/config/site";
+import { Menu, X } from "lucide-react";
+import { VeltroLogo } from "@/components/brand/VeltroLogo";
+import { MagneticButton } from "@/components/ui/MagneticButton";
+import { mainNav } from "@/config/navigation";
 import { cn } from "@/lib/utils";
 
 export function Header() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const sentinelRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const sentinel = sentinelRef.current;
+    if (!sentinel) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setScrolled(!entry.isIntersecting),
+      { threshold: 0 }
+    );
+    observer.observe(sentinel);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileOpen]);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/80 backdrop-blur-xl">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-2" aria-label="Veltro home">
-          <VeltroWordmark size="md" />
+    <>
+      <div ref={sentinelRef} className="pointer-events-none absolute left-0 top-0 h-1 w-full" />
+
+      <nav
+        className={cn(
+          "fixed left-1/2 top-4 z-50 flex -translate-x-1/2 items-center gap-4 rounded-full px-4 py-3 transition-all duration-500 ease-out md:gap-8 md:px-6",
+          scrolled
+            ? "border border-cream-300 bg-cream/80 text-charcoal shadow-lg backdrop-blur-xl"
+            : "bg-transparent text-cream"
+        )}
+      >
+        <Link
+          href="/"
+          className="flex items-center gap-2 font-heading text-lg font-bold tracking-tight"
+          aria-label="Veltro home"
+        >
+          <VeltroLogo size={24} />
+          Veltro
         </Link>
 
-        {/* Desktop nav */}
-        <nav className="hidden items-center gap-1 md:flex" aria-label="Main">
-          {mainNav.map((item) => (
+        {/* Desktop links */}
+        <div className="hidden items-center gap-6 md:flex">
+          {mainNav.slice(0, 3).map((item) => (
             <Link
               key={item.href}
               href={item.href}
               className={cn(
-                "rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground",
-                pathname === item.href ? "text-foreground" : "text-muted-foreground"
+                "link-lift font-body text-sm font-medium opacity-80 transition-opacity hover:opacity-100",
+                pathname === item.href && "opacity-100"
               )}
             >
               {item.title}
             </Link>
           ))}
-        </nav>
-
-        {/* Desktop CTA */}
-        <div className="hidden items-center gap-3 md:flex">
           <Link
-            href={siteConfig.appUrl}
-            className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+            href="https://app.getveltro.com/#/login"
+            className="link-lift font-body text-sm font-medium opacity-80 transition-opacity hover:opacity-100"
           >
-            Sign in
-          </Link>
-          <Link
-            href="/demo"
-            className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Get a demo
+            Login
           </Link>
         </div>
+
+        <MagneticButton
+          href="/demo"
+          variant={scrolled ? "clay" : "outline-cream"}
+          size="md"
+          className="hidden md:inline-flex"
+        >
+          Start Trial
+        </MagneticButton>
 
         {/* Mobile hamburger */}
         <button
-          className="inline-flex items-center justify-center rounded-md p-2 text-muted-foreground md:hidden"
+          className="p-1 md:hidden"
           onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          aria-label="Toggle menu"
         >
-          {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          {mobileOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
-      </div>
+      </nav>
 
-      {/* Mobile menu */}
+      {/* Mobile dropdown */}
       {mobileOpen && (
-        <div className="border-t border-border md:hidden">
-          <nav className="mx-auto max-w-7xl space-y-1 px-4 py-4">
-            {mainNav.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setMobileOpen(false)}
-                className={cn(
-                  "block rounded-md px-3 py-2 text-base font-medium transition-colors",
-                  pathname === item.href
-                    ? "bg-accent text-accent-foreground"
-                    : "text-muted-foreground hover:bg-accent hover:text-accent-foreground"
-                )}
-              >
-                {item.title}
-              </Link>
-            ))}
-            <div className="mt-4 flex flex-col gap-2 border-t border-border pt-4">
-              <Link
-                href={siteConfig.appUrl}
-                className="rounded-md px-3 py-2 text-base font-medium text-muted-foreground"
-              >
-                Sign in
-              </Link>
-              <Link
-                href="/demo"
-                className="rounded-lg bg-primary px-4 py-2 text-center text-base font-medium text-primary-foreground"
-              >
-                Get a demo
-              </Link>
-            </div>
-          </nav>
+        <div className="fixed left-4 right-4 top-16 z-40 flex flex-col gap-4 rounded-[2rem] border border-cream-300 bg-cream/95 p-6 shadow-xl backdrop-blur-xl md:hidden">
+          {mainNav.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={() => setMobileOpen(false)}
+              className="border-b border-cream-300 py-2 font-body text-base font-medium text-charcoal last:border-0"
+            >
+              {link.title}
+            </Link>
+          ))}
+          <Link
+            href="https://app.getveltro.com/#/login"
+            onClick={() => setMobileOpen(false)}
+            className="border-b border-cream-300 py-2 font-body text-base font-medium text-charcoal"
+          >
+            Login
+          </Link>
+          <MagneticButton
+            href="/demo"
+            variant="clay"
+            size="md"
+            className="mt-2 w-full"
+          >
+            Start Trial
+          </MagneticButton>
         </div>
       )}
-    </header>
+    </>
   );
 }

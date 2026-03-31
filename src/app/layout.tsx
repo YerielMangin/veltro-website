@@ -1,19 +1,34 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans, Outfit, Cormorant_Garamond, IBM_Plex_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { PostHogProvider } from "@/lib/posthog-provider";
 import "@/styles/globals.css";
 
-const inter = Inter({
+const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-sans",
+  variable: "--font-heading",
   display: "swap",
 });
 
-const jetbrains = JetBrains_Mono({
+const outfit = Outfit({
   subsets: ["latin"],
+  variable: "--font-body",
+  display: "swap",
+});
+
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-display",
+  display: "swap",
+});
+
+const ibmPlexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
   variable: "--font-mono",
   display: "swap",
 });
@@ -40,9 +55,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Veltro" }],
   creator: "Veltro",
   icons: {
-    icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
-    ],
+    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
     apple: "/images/veltro-logo-thumbnail.svg",
   },
   openGraph: {
@@ -71,8 +84,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#09090b" },
+    { media: "(prefers-color-scheme: light)", color: "#F2F0E9" },
+    { media: "(prefers-color-scheme: dark)", color: "#1A1A1A" },
   ],
   width: "device-width",
   initialScale: 1,
@@ -80,10 +93,14 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${jetbrains.variable}`}>
-      <body className="min-h-screen bg-background font-sans antialiased">
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${plusJakarta.variable} ${outfit.variable} ${cormorant.variable} ${ibmPlexMono.variable}`}
+    >
+      <body className="min-h-screen bg-cream font-body text-charcoal antialiased">
         <PostHogProvider>
-          <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+          <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
             {children}
           </ThemeProvider>
         </PostHogProvider>

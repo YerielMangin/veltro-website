@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Customers | Veltro OS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&amp;family=Cormorant+Garamond:ital,wght@1,400;1,600&amp;family=Outfit:wght@300;400;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Inter:wght@400;500&amp;family=Space+Grotesk:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container": "#f0eee7",
+              "surface-variant": "#e4e2dc",
+              "error": "#ba1a1a",
+              "surface-tint": "#506358",
+              "surface-container-highest": "#e4e2dc",
+              "on-surface-variant": "#424844",
+              "on-secondary": "#ffffff",
+              "secondary": "#a53c19",
+              "inverse-primary": "#b7cbbe",
+              "error-container": "#ffdad6",
+              "on-error-container": "#93000a",
+              "surface-container-high": "#eae8e1",
+              "surface-bright": "#fbf9f2",
+              "on-secondary-container": "#6e1c00",
+              "surface-dim": "#dcdad3",
+              "surface": "#fbf9f2",
+              "on-background": "#1b1c18",
+              "secondary-fixed-dim": "#ffb59f",
+              "secondary-fixed": "#ffdbd0",
+              "tertiary-container": "#3c3c3c",
+              "on-primary-fixed": "#0d1f16",
+              "primary-fixed-dim": "#b7cbbe",
+              "primary-fixed": "#d3e8d9",
+              "tertiary": "#262626",
+              "surface-container-lowest": "#ffffff",
+              "tertiary-fixed-dim": "#c8c6c5",
+              "inverse-surface": "#30312c",
+              "inverse-on-surface": "#f3f1ea",
+              "on-primary-container": "#97ab9e",
+              "on-tertiary-container": "#a8a6a6",
+              "tertiary-fixed": "#e5e2e1",
+              "on-tertiary-fixed-variant": "#474746",
+              "on-tertiary-fixed": "#1c1b1b",
+              "on-primary": "#ffffff",
+              "secondary-container": "#ff7e55",
+              "on-secondary-fixed": "#3a0a00",
+              "outline-variant": "#c3c8c2",
+              "background": "#fbf9f2",
+              "primary-container": "#2e4036",
+              "on-surface": "#1b1c18",
+              "on-secondary-fixed-variant": "#842502",
+              "primary": "#182a21",
+              "outline": "#737874",
+              "on-primary-fixed-variant": "#394b40",
+              "on-error": "#ffffff",
+              "surface-container-low": "#f6f4ec",
+              "on-tertiary": "#ffffff"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Outfit"],
+              "display": ["Cormorant Garamond"],
+              "data": ["IBM Plex Mono"],
+              "label": ["Space Grotesk"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .grain-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+        .magnetic-hover:hover { transform: scale(1.03); transition: transform 0.3s ease-out; }
+        .tonal-layering { box-shadow: 0 20px 50px rgba(24, 42, 33, 0.04); }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-secondary-container selection:text-on-secondary-container">
+<div class="grain-overlay"></div>
+<!-- Navigation -->
+<nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between max-w-5xl mx-auto rounded-full mt-6 px-6 py-2 bg-stone-50/60 dark:bg-stone-900/60 backdrop-blur-xl shadow-[0_20px_50px_rgba(24,42,33,0.04)]">
+<div class="text-2xl font-bold tracking-tight text-emerald-950 dark:text-emerald-50 font-headline">Veltro</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-stone-600 dark:text-stone-400 font-medium hover:text-emerald-800 transition-colors" href="#">Features</a>
+<a class="text-stone-600 dark:text-stone-400 font-medium hover:text-emerald-800 transition-colors" href="#">Pricing</a>
+<a class="text-stone-600 dark:text-stone-400 font-medium hover:text-emerald-800 transition-colors" href="#">Use Cases</a>
+<a class="text-stone-600 dark:text-stone-400 font-medium hover:text-emerald-800 transition-colors" href="#">Blog</a>
+</div>
+<button class="bg-secondary text-on-secondary px-6 py-2 rounded-full font-semibold magnetic-hover transition-transform duration-300 ease-out active:scale-95">Start Trial</button>
+</nav>
+<!-- Hero Section -->
+<header class="h-[409px] bg-tertiary flex flex-col items-center justify-center text-center px-6 relative overflow-hidden">
+<div class="relative z-10 max-w-4xl mx-auto">
+<span class="font-data text-secondary text-sm tracking-widest mb-4 block">CUSTOMER STORIES</span>
+<h1 class="font-display italic text-5xl md:text-7xl text-surface mb-6 leading-tight">Teams that found their rhythm.</h1>
+<p class="font-body text-surface/50 text-lg md:text-xl max-w-2xl mx-auto">See how operations teams across industries use Veltro to gain clarity and velocity.</p>
+</div>
+</header>
+<!-- Featured Story -->
+<section class="py-24 bg-surface px-6">
+<div class="max-w-6xl mx-auto">
+<div class="bg-surface-container-lowest rounded-xl md:flex overflow-hidden tonal-layering">
+<div class="md:w-1/2 min-h-[400px] relative">
+<img alt="Engineers working in a modern clean manufacturing facility" class="absolute inset-0 w-full h-full object-cover" data-alt="High-tech manufacturing facility with engineers collaborating" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQiGY1gLlnGE3FElMy1rTb3ZK7q6wieMLNx0m8eCZ2iYLldY6wloO3DDUyayKmQRafPqNdXyc2i52KvSoALVfIetYZSBfXXESTua1j9c2dD1YMy5W73gVwqmqpWSQtsp2pS6TAst-FoOhK9WrEA6Yio1ZRe4RJllgzWfH2OPuQJIfcnquSKQFrAUdpEAB--KpomrHBjuosknbWufDErMoX3teJAiveztB7ykuoM6cFWZsGdvtLZ9yXWA_dlYaHPvFi9rXbzTuPFj9g"/>
+</div>
+<div class="md:w-1/2 p-12 md:p-16 flex flex-col justify-center">
+<span class="font-data text-secondary text-xs mb-8 uppercase tracking-widest">Featured Narrative — Apex Logistics</span>
+<blockquote class="font-display italic text-3xl md:text-4xl text-primary leading-tight mb-8">
+                        "Veltro didn't just organize our tasks; it changed how our people think about operations. We finally stopped fighting fires and started building futures."
+                    </blockquote>
+<div class="mb-10">
+<div class="font-data text-primary font-bold text-sm">MARCUS CHEN</div>
+<div class="font-data text-on-surface-variant text-xs">Director of Operations, Apex Global</div>
+</div>
+<div class="border-t border-surface-variant pt-8 mb-8">
+<div class="font-headline text-4xl text-secondary font-extrabold mb-2">40% reduction</div>
+<div class="font-body text-on-surface-variant">in reactive work orders within six months</div>
+</div>
+<a class="text-secondary font-semibold flex items-center gap-2 hover:translate-x-2 transition-transform font-body" href="#">
+                        Read the full story 
+                        <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- All Stories Grid -->
+<section class="py-24 bg-white px-6">
+<div class="max-w-6xl mx-auto">
+<h2 class="font-headline text-3xl mb-16 text-primary tracking-tight">Voices of Efficiency</h2>
+<div class="grid md:grid-cols-2 gap-8">
+<!-- Story Card 1 -->
+<div class="p-10 rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors group">
+<div class="flex justify-between items-start mb-12">
+<div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center text-surface">
+<span class="material-symbols-outlined">domain</span>
+</div>
+<span class="font-data text-secondary text-[10px] px-3 py-1 rounded-full bg-secondary/10 uppercase tracking-wider">Property Management</span>
+</div>
+<h3 class="font-headline text-2xl text-primary mb-4">Lumina Residential</h3>
+<p class="font-body text-on-surface-variant text-lg mb-8 leading-relaxed">Reduced inspection prep time from 3 weeks to 2 days across 14 properties.</p>
+<a class="text-secondary font-semibold flex items-center gap-2 font-body" href="#">
+                        Read story 
+                        <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+<!-- Story Card 2 -->
+<div class="p-10 rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors group">
+<div class="flex justify-between items-start mb-12">
+<div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center text-surface">
+<span class="material-symbols-outlined">health_and_safety</span>
+</div>
+<span class="font-data text-secondary text-[10px] px-3 py-1 rounded-full bg-secondary/10 uppercase tracking-wider">Healthcare</span>
+</div>
+<h3 class="font-headline text-2xl text-primary mb-4">St. Jude Medical Center</h3>
+<p class="font-body text-on-surface-variant text-lg mb-8 leading-relaxed">Achieved 100% compliance audit success for medical equipment maintenance.</p>
+<a class="text-secondary font-semibold flex items-center gap-2 font-body" href="#">
+                        Read story 
+                        <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+<!-- Story Card 3 -->
+<div class="p-10 rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors group">
+<div class="flex justify-between items-start mb-12">
+<div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center text-surface">
+<span class="material-symbols-outlined">school</span>
+</div>
+<span class="font-data text-secondary text-[10px] px-3 py-1 rounded-full bg-secondary/10 uppercase tracking-wider">Education</span>
+</div>
+<h3 class="font-headline text-2xl text-primary mb-4">Oakwood University</h3>
+<p class="font-body text-on-surface-variant text-lg mb-8 leading-relaxed">Centralized facility requests for 3 campuses into one unified ledger.</p>
+<a class="text-secondary font-semibold flex items-center gap-2 font-body" href="#">
+                        Read story 
+                        <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+<!-- Story Card 4 -->
+<div class="p-10 rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors group">
+<div class="flex justify-between items-start mb-12">
+<div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center text-surface">
+<span class="material-symbols-outlined">factory</span>
+</div>
+<span class="font-data text-secondary text-[10px] px-3 py-1 rounded-full bg-secondary/10 uppercase tracking-wider">Manufacturing</span>
+</div>
+<h3 class="font-headline text-2xl text-primary mb-4">Precision Dynamics</h3>
+<p class="font-body text-on-surface-variant text-lg mb-8 leading-relaxed">Eliminated $200k in annual downtime costs through predictive modeling.</p>
+<a class="text-secondary font-semibold flex items-center gap-2 font-body" href="#">
+                        Read story 
+                        <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Industries We Serve -->
+<section class="py-20 bg-surface-container-low px-6">
+<div class="max-w-5xl mx-auto text-center">
+<h3 class="font-data text-xs text-on-surface-variant/60 tracking-[0.2em] mb-12 uppercase">Tailored for your ecosystem</h3>
+<div class="flex flex-wrap justify-center gap-4">
+<div class="bg-surface-container-lowest px-8 py-4 rounded-full flex items-center gap-3 shadow-sm border border-outline-variant/10">
+<span class="material-symbols-outlined text-primary">apartment</span>
+<span class="font-body font-medium">Facility Management</span>
+</div>
+<div class="bg-surface-container-lowest px-8 py-4 rounded-full flex items-center gap-3 shadow-sm border border-outline-variant/10">
+<span class="material-symbols-outlined text-primary">precision_manufacturing</span>
+<span class="font-body font-medium">Manufacturing</span>
+</div>
+<div class="bg-surface-container-lowest px-8 py-4 rounded-full flex items-center gap-3 shadow-sm border border-outline-variant/10">
+<span class="material-symbols-outlined text-primary">local_hospital</span>
+<span class="font-body font-medium">Healthcare</span>
+</div>
+<div class="bg-surface-container-lowest px-8 py-4 rounded-full flex items-center gap-3 shadow-sm border border-outline-variant/10">
+<span class="material-symbols-outlined text-primary">history_edu</span>
+<span class="font-body font-medium">Education</span>
+</div>
+<div class="bg-surface-container-lowest px-8 py-4 rounded-full flex items-center gap-3 shadow-sm border border-outline-variant/10">
+<span class="material-symbols-outlined text-primary">real_estate_agent</span>
+<span class="font-body font-medium">Property Management</span>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-24 bg-primary px-6 text-center">
+<div class="max-w-3xl mx-auto">
+<h2 class="font-display italic text-5xl text-surface mb-8">Your team could be next.</h2>
+<p class="font-body text-surface/70 text-lg mb-12 max-w-xl mx-auto">Experience the operational operating system designed for modern scale.</p>
+<button class="bg-secondary text-on-secondary px-10 py-4 rounded-full font-headline text-lg font-bold magnetic-hover transition-transform duration-300 shadow-xl shadow-black/20">
+                Start Your 14-Day Trial
+            </button>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full px-12 py-20 flex flex-col md:flex-row justify-between items-start gap-12 bg-neutral-900 text-white rounded-t-[3rem]">
+<div class="space-y-6">
+<div class="text-xl font-bold text-white font-headline">Veltro</div>
+<p class="font-data text-stone-400 text-xs tracking-wider">© 2024 VELTRO OS. SYSTEM OPERATIONAL.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-x-16 gap-y-4">
+<a class="text-stone-400 hover:text-white transition-colors font-body hover:translate-x-1 transition-transform" href="#">Features</a>
+<a class="text-stone-400 hover:text-white transition-colors font-body hover:translate-x-1 transition-transform" href="#">Pricing</a>
+<a class="text-stone-400 hover:text-white transition-colors font-body hover:translate-x-1 transition-transform" href="#">Use Cases</a>
+<a class="text-stone-400 hover:text-white transition-colors font-body hover:translate-x-1 transition-transform" href="#">Blog</a>
+<a class="text-stone-400 hover:text-white transition-colors font-body hover:translate-x-1 transition-transform" href="#">Privacy</a>
+<a class="text-stone-400 hover:text-white transition-colors font-body hover:translate-x-1 transition-transform" href="#">Terms</a>
+</div>
+</footer>
+</body></html>

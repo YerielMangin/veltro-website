@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,700;0,800;1,400&amp;family=Cormorant+Garamond:ital,wght@1,300;1,400;1,600&amp;family=Outfit:wght@300;400;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-fixed-dim": "#ffb59f",
+              "primary": "#182a21",
+              "on-primary-container": "#97ab9e",
+              "on-error": "#ffffff",
+              "on-background": "#1b1c18",
+              "on-tertiary-fixed-variant": "#474746",
+              "on-primary": "#ffffff",
+              "outline": "#737874",
+              "primary-container": "#2e4036",
+              "inverse-primary": "#b7cbbe",
+              "error": "#ba1a1a",
+              "surface-tint": "#506358",
+              "background": "#fbf9f2",
+              "surface-bright": "#fbf9f2",
+              "tertiary-fixed": "#e5e2e1",
+              "on-primary-fixed": "#0d1f16",
+              "secondary-fixed": "#ffdbd0",
+              "surface-variant": "#e4e2dc",
+              "tertiary": "#262626",
+              "on-secondary-fixed-variant": "#842502",
+              "inverse-on-surface": "#f3f1ea",
+              "surface-container-highest": "#e4e2dc",
+              "primary-fixed": "#d3e8d9",
+              "tertiary-container": "#3c3c3c",
+              "on-tertiary-fixed": "#1c1b1b",
+              "surface-container-high": "#eae8e1",
+              "surface-container-low": "#f6f4ec",
+              "surface-container": "#f0eee7",
+              "secondary-container": "#ff7e55",
+              "secondary": "#a53c19",
+              "outline-variant": "#c3c8c2",
+              "on-secondary-container": "#6e1c00",
+              "on-primary-fixed-variant": "#394b40",
+              "on-tertiary": "#ffffff",
+              "tertiary-fixed-dim": "#c8c6c5",
+              "surface": "#fbf9f2",
+              "primary-fixed-dim": "#b7cbbe",
+              "inverse-surface": "#30312c",
+              "surface-dim": "#dcdad3",
+              "on-surface-variant": "#424844",
+              "on-tertiary-container": "#a8a6a6",
+              "surface-container-lowest": "#ffffff",
+              "on-surface": "#1b1c18",
+              "on-secondary-fixed": "#3a0a00",
+              "on-error-container": "#93000a",
+              "on-secondary": "#ffffff",
+              "error-container": "#ffdad6"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Outfit"],
+              "label": ["Space Grotesk"],
+              "serif": ["Cormorant Garamond"],
+              "mono": ["IBM Plex Mono"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #fbf9f2;
+        }
+        .grain-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<div class="grain-overlay"></div>
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-1/2 -translate-x-1/2 z-50 flex items-center gap-8 rounded-full mt-6 mx-auto w-fit px-8 py-3 bg-transparent backdrop-blur-xl transition-all duration-500 scroll:bg-[#fbf9f2]/60 shadow-[0_40px_60px_-15px_rgba(24,42,33,0.04)]">
+<a class="text-2xl font-bold tracking-tighter text-primary font-headline" href="#">Veltro</a>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-primary opacity-80 hover:opacity-100 hover:scale-105 transition-transform duration-300 ease-out font-body" href="#">Features</a>
+<a class="text-primary opacity-80 hover:opacity-100 hover:scale-105 transition-transform duration-300 ease-out font-body" href="#">Pricing</a>
+<a class="text-primary opacity-80 hover:opacity-100 hover:scale-105 transition-transform duration-300 ease-out font-body" href="#">Use Cases</a>
+<a class="text-primary opacity-80 hover:opacity-100 hover:scale-105 transition-transform duration-300 ease-out font-body" href="#">Blog</a>
+</div>
+<button class="bg-secondary text-on-secondary px-6 py-2 rounded-full font-headline font-bold text-sm hover:scale-105 transition-transform duration-300 ease-out shadow-lg">Start Trial</button>
+</nav>
+<main class="pt-24">
+<!-- Hero Section -->
+<section class="h-[307px] flex flex-col items-center justify-center text-center px-6 bg-surface">
+<h2 class="font-headline font-bold text-primary/60 tracking-tight text-xl mb-2">Get in touch</h2>
+<h1 class="font-serif italic text-5xl md:text-7xl text-primary leading-tight">We'd love to hear from you.</h1>
+</section>
+<!-- Contact Section -->
+<section class="max-w-7xl mx-auto px-6 pb-32">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+<!-- Left Column: Form -->
+<div class="bg-surface-container-lowest rounded-xl p-8 md:p-12 shadow-[0_40px_60px_-15px_rgba(24,42,33,0.04)]">
+<form class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="font-mono text-[10px] uppercase tracking-widest text-primary/60 px-1">Name</label>
+<input class="w-full bg-surface-container-high border-none rounded-lg focus:ring-2 focus:ring-primary/20 py-4 px-6 font-body placeholder:text-primary/30" placeholder="John Doe" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-mono text-[10px] uppercase tracking-widest text-primary/60 px-1">Email</label>
+<input class="w-full bg-surface-container-high border-none rounded-lg focus:ring-2 focus:ring-primary/20 py-4 px-6 font-body placeholder:text-primary/30" placeholder="john@company.com" type="email"/>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="font-mono text-[10px] uppercase tracking-widest text-primary/60 px-1">Company</label>
+<input class="w-full bg-surface-container-high border-none rounded-lg focus:ring-2 focus:ring-primary/20 py-4 px-6 font-body placeholder:text-primary/30" placeholder="Veltro Corp" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-mono text-[10px] uppercase tracking-widest text-primary/60 px-1">Subject</label>
+<select class="w-full bg-surface-container-high border-none rounded-lg focus:ring-2 focus:ring-primary/20 py-4 px-6 font-body text-primary/60">
+<option>General Inquiry</option>
+<option>Sales</option>
+<option>Support</option>
+<option>Partnership</option>
+</select>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-mono text-[10px] uppercase tracking-widest text-primary/60 px-1">Message</label>
+<textarea class="w-full bg-surface-container-high border-none rounded-lg focus:ring-2 focus:ring-primary/20 py-4 px-6 font-body placeholder:text-primary/30 resize-none" placeholder="How can we help you?" rows="4"></textarea>
+</div>
+<div class="pt-4 flex flex-col gap-4">
+<button class="group relative overflow-hidden bg-secondary text-on-secondary px-10 py-4 rounded-full font-headline font-bold text-lg hover:scale-[1.03] transition-transform duration-300 ease-out shadow-xl flex items-center justify-center gap-2">
+<span>Send Message</span>
+<span class="material-symbols-outlined text-xl">send</span>
+</button>
+<p class="font-mono text-[11px] text-primary/40 text-center tracking-tight">We typically respond within 24 hours.</p>
+</div>
+</form>
+</div>
+<!-- Right Column: Info Cards -->
+<div class="space-y-6">
+<!-- Card 1 -->
+<div class="bg-surface-container-low rounded-xl p-8 flex items-start gap-6 hover:translate-x-1 transition-transform duration-300 group">
+<div class="bg-primary/5 p-4 rounded-lg">
+<span class="material-symbols-outlined text-primary text-3xl">payments</span>
+</div>
+<div class="space-y-2">
+<h3 class="font-headline font-bold text-2xl text-primary">Sales</h3>
+<p class="text-primary/70 font-body leading-relaxed">Interested in Veltro for your team? Let's talk about how we can accelerate your operations.</p>
+<a class="inline-block font-mono text-secondary font-bold hover:underline" href="mailto:sales@getveltro.com">sales@getveltro.com</a>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-low rounded-xl p-8 flex items-start gap-6 hover:translate-x-1 transition-transform duration-300 group">
+<div class="bg-primary/5 p-4 rounded-lg">
+<span class="material-symbols-outlined text-primary text-3xl">support_agent</span>
+</div>
+<div class="space-y-2">
+<h3 class="font-headline font-bold text-2xl text-primary">Support</h3>
+<p class="text-primary/70 font-body leading-relaxed">Already a customer? We're here to help you solve any operational challenge or technical issue.</p>
+<a class="inline-block font-mono text-secondary font-bold hover:underline" href="mailto:support@getveltro.com">support@getveltro.com</a>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-low rounded-xl p-8 flex items-start gap-6 hover:translate-x-1 transition-transform duration-300 group">
+<div class="bg-primary/5 p-4 rounded-lg">
+<span class="material-symbols-outlined text-primary text-3xl">handshake</span>
+</div>
+<div class="space-y-2">
+<h3 class="font-headline font-bold text-2xl text-primary">Partnerships</h3>
+<p class="text-primary/70 font-body leading-relaxed">Want to integrate or resell? Let's explore how we can build a better operational ecosystem together.</p>
+<a class="inline-block font-mono text-secondary font-bold hover:underline" href="mailto:partners@getveltro.com">partners@getveltro.com</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-tertiary rounded-t-[4rem] w-full pt-20 pb-12 px-12 md:px-24 flex flex-col md:flex-row justify-between text-on-primary">
+<div class="mb-12 md:mb-0">
+<h2 class="text-4xl font-bold text-on-primary mb-2 font-headline">Veltro</h2>
+<p class="font-mono text-on-primary/60 max-w-xs leading-relaxed">Velocity + Control. The Operational OS for teams that ship.</p>
+<div class="flex items-center gap-2 mt-6">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-mono text-[10px] uppercase tracking-widest text-on-primary/40">System Status: Optimal</span>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-12">
+<div class="space-y-4">
+<h4 class="font-headline font-bold text-on-primary">Product</h4>
+<ul class="space-y-2">
+<li><a class="text-on-primary/60 hover:text-on-primary font-body transition-colors" href="#">Features</a></li>
+<li><a class="text-on-primary/60 hover:text-on-primary font-body transition-colors" href="#">Integrations</a></li>
+<li><a class="text-on-primary/60 hover:text-on-primary font-body transition-colors" href="#">Enterprise</a></li>
+<li><a class="text-on-primary/60 hover:text-on-primary font-body transition-colors" href="#">Solutions</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-headline font-bold text-on-primary">Company</h4>
+<ul class="space-y-2">
+<li><a class="text-on-primary/60 hover:text-on-primary font-body transition-colors" href="#">About</a></li>
+<li><a class="text-on-primary/60 hover:text-on-primary font-body transition-colors" href="#">Careers</a></li>
+<li><a class="text-on-primary/60 hover:text-on-primary font-body transition-colors" href="#">Contact</a></li>
+<li><a class="text-on-primary/60 hover:text-on-primary font-body transition-colors" href="#">Press</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-headline font-bold text-on-primary">Resources</h4>
+<ul class="space-y-2">
+<li><a class="text-on-primary/60 hover:text-on-primary font-body transition-colors" href="#">Documentation</a></li>
+<li><a class="text-on-primary/60 hover:text-on-primary font-body transition-colors" href="#">Community</a></li>
+<li><a class="text-on-primary/60 hover:text-on-primary font-body transition-colors" href="#">API Reference</a></li>
+<li><a class="text-on-primary/60 hover:text-on-primary font-body transition-colors" href="#">Guides</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-headline font-bold text-on-primary">Legal</h4>
+<ul class="space-y-2">
+<li><a class="text-on-primary/60 hover:text-on-primary font-body transition-colors" href="#">Privacy</a></li>
+<li><a class="text-on-primary/60 hover:text-on-primary font-body transition-colors" href="#">Terms</a></li>
+<li><a class="text-on-primary/60 hover:text-on-primary font-body transition-colors" href="#">Security</a></li>
+</ul>
+</div>
+</div>
+<div class="w-full mt-20 border-t border-on-primary/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="font-mono text-[10px] text-on-primary/40">© 2024 Veltro OS. Velocity + Control.</p>
+<div class="flex gap-6">
+<a class="text-on-primary/40 hover:text-on-primary transition-colors" href="#"><span class="material-symbols-outlined text-xl">share</span></a>
+<a class="text-on-primary/40 hover:text-on-primary transition-colors" href="#"><span class="material-symbols-outlined text-xl">rss_feed</span></a>
+</div>
+</div>
+</footer>
+</body></html>

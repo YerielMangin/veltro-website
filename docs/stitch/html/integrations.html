@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&amp;family=Cormorant+Garamond:ital,wght@1,400;1,600&amp;family=Outfit:wght@300;400;500&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Inter:wght@400;500&amp;family=Space+Grotesk:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container": "#f0eee7",
+              "surface-variant": "#e4e2dc",
+              "error": "#ba1a1a",
+              "surface-tint": "#506358",
+              "surface-container-highest": "#e4e2dc",
+              "on-surface-variant": "#424844",
+              "on-secondary": "#ffffff",
+              "secondary": "#a53c19",
+              "inverse-primary": "#b7cbbe",
+              "error-container": "#ffdad6",
+              "on-error-container": "#93000a",
+              "surface-container-high": "#eae8e1",
+              "surface-bright": "#fbf9f2",
+              "on-secondary-container": "#6e1c00",
+              "surface-dim": "#dcdad3",
+              "surface": "#fbf9f2",
+              "on-background": "#1b1c18",
+              "secondary-fixed-dim": "#ffb59f",
+              "secondary-fixed": "#ffdbd0",
+              "tertiary-container": "#3c3c3c",
+              "on-primary-fixed": "#0d1f16",
+              "primary-fixed-dim": "#b7cbbe",
+              "primary-fixed": "#d3e8d9",
+              "tertiary": "#262626",
+              "surface-container-lowest": "#ffffff",
+              "tertiary-fixed-dim": "#c8c6c5",
+              "inverse-surface": "#30312c",
+              "inverse-on-surface": "#f3f1ea",
+              "on-primary-container": "#97ab9e",
+              "on-tertiary-container": "#a8a6a6",
+              "tertiary-fixed": "#e5e2e1",
+              "on-tertiary-fixed-variant": "#474746",
+              "on-tertiary-fixed": "#1c1b1b",
+              "on-primary": "#ffffff",
+              "secondary-container": "#ff7e55",
+              "on-secondary-fixed": "#3a0a00",
+              "outline-variant": "#c3c8c2",
+              "background": "#fbf9f2",
+              "primary-container": "#2e4036",
+              "on-surface": "#1b1c18",
+              "on-secondary-fixed-variant": "#842502",
+              "primary": "#182a21",
+              "outline": "#737874",
+              "on-primary-fixed-variant": "#394b40",
+              "on-error": "#ffffff",
+              "surface-container-low": "#f6f4ec",
+              "on-tertiary": "#ffffff"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Outfit"],
+              "display": ["Cormorant Garamond"],
+              "data": ["IBM Plex Mono"],
+              "label": ["Space Grotesk"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Outfit', sans-serif; }
+        .grain {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+        .magnetic-hover { transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1); }
+        .magnetic-hover:hover { transform: scale(1.03); }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-secondary-container selection:text-on-secondary-container">
+<div class="grain"></div>
+<!-- Navigation Shell -->
+<nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between max-w-5xl mx-auto rounded-full mt-6 px-6 py-2 bg-stone-50/60 dark:bg-stone-900/60 backdrop-blur-xl shadow-[0_20px_50px_rgba(24,42,33,0.04)]">
+<div class="text-2xl font-bold tracking-tight text-emerald-950 dark:text-emerald-50">Veltro</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-stone-600 dark:text-stone-400 font-medium hover:text-emerald-800 transition-colors" href="#">Features</a>
+<a class="text-stone-600 dark:text-stone-400 font-medium hover:text-emerald-800 transition-colors" href="#">Pricing</a>
+<a class="text-emerald-900 dark:text-emerald-400 font-bold border-b-2 border-orange-600" href="#">Use Cases</a>
+<a class="text-stone-600 dark:text-stone-400 font-medium hover:text-emerald-800 transition-colors" href="#">Blog</a>
+</div>
+<button class="bg-secondary text-on-secondary px-6 py-2 rounded-full font-semibold hover:scale-[1.03] transition-transform duration-300 ease-out active:scale-95">
+            Start Trial
+        </button>
+</nav>
+<main>
+<!-- Hero Section -->
+<section class="h-[409px] flex flex-col items-center justify-center text-center px-6 pt-24 bg-surface">
+<div class="mb-4">
+<span class="font-data text-xs tracking-widest text-secondary uppercase">INTEGRATIONS</span>
+</div>
+<h1 class="font-display italic text-5xl md:text-7xl text-primary leading-tight mb-4">
+                Fits right into your workflow.
+            </h1>
+<p class="font-body text-lg text-on-surface-variant max-w-xl mx-auto">
+                Veltro connects to the tools your team already uses. Seamlessly sync data across your existing stack.
+            </p>
+</section>
+<!-- Integration Categories Section -->
+<section class="py-24 px-6 bg-surface">
+<div class="max-w-7xl mx-auto">
+<!-- Filter Pills -->
+<div class="flex flex-wrap justify-center gap-3 mb-16">
+<button class="px-6 py-2 rounded-full bg-primary text-on-primary font-medium magnetic-hover">All</button>
+<button class="px-6 py-2 rounded-full bg-surface-container text-on-surface-variant font-medium magnetic-hover">Communication</button>
+<button class="px-6 py-2 rounded-full bg-surface-container text-on-surface-variant font-medium magnetic-hover">ERP</button>
+<button class="px-6 py-2 rounded-full bg-surface-container text-on-surface-variant font-medium magnetic-hover">IoT</button>
+<button class="px-6 py-2 rounded-full bg-surface-container text-on-surface-variant font-medium magnetic-hover">Storage</button>
+<button class="px-6 py-2 rounded-full bg-surface-container text-on-surface-variant font-medium magnetic-hover">Identity</button>
+</div>
+<!-- Integration Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Slack Card -->
+<div class="bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/20 shadow-sm flex flex-col gap-6 magnetic-hover">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 flex items-center justify-center bg-surface-container rounded-lg">
+<span class="material-symbols-outlined text-primary text-3xl">chat</span>
+</div>
+<span class="font-data text-[10px] px-2 py-1 bg-primary/5 text-primary rounded border border-primary/10">Available</span>
+</div>
+<div>
+<h3 class="font-headline text-xl text-primary mb-1">Slack</h3>
+<span class="font-label text-xs text-secondary/70 uppercase tracking-wider">Communication</span>
+<p class="font-body text-on-surface-variant mt-3 text-sm leading-relaxed">Send automated incident reports and real-time alerts to your team channels.</p>
+</div>
+</div>
+<!-- SAP Card -->
+<div class="bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/20 shadow-sm flex flex-col gap-6 magnetic-hover">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 flex items-center justify-center bg-surface-container rounded-lg">
+<span class="material-symbols-outlined text-primary text-3xl">account_balance</span>
+</div>
+<span class="font-data text-[10px] px-2 py-1 bg-primary/5 text-primary rounded border border-primary/10">Available</span>
+</div>
+<div>
+<h3 class="font-headline text-xl text-primary mb-1">SAP</h3>
+<span class="font-label text-xs text-secondary/70 uppercase tracking-wider">ERP</span>
+<p class="font-body text-on-surface-variant mt-3 text-sm leading-relaxed">Bi-directional asset synchronization and financial reporting ledger integration.</p>
+</div>
+</div>
+<!-- IoT Sensors Card -->
+<div class="bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/20 shadow-sm flex flex-col gap-6 magnetic-hover">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 flex items-center justify-center bg-surface-container rounded-lg">
+<span class="material-symbols-outlined text-primary text-3xl">sensors</span>
+</div>
+<span class="font-data text-[10px] px-2 py-1 bg-secondary/10 text-secondary rounded border border-secondary/20">Coming Soon</span>
+</div>
+<div>
+<h3 class="font-headline text-xl text-primary mb-1">IoT Hub</h3>
+<span class="font-label text-xs text-secondary/70 uppercase tracking-wider">IoT</span>
+<p class="font-body text-on-surface-variant mt-3 text-sm leading-relaxed">Direct telemetry ingestion from edge sensors for predictive maintenance.</p>
+</div>
+</div>
+<!-- Okta Card -->
+<div class="bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/20 shadow-sm flex flex-col gap-6 magnetic-hover">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 flex items-center justify-center bg-surface-container rounded-lg">
+<span class="material-symbols-outlined text-primary text-3xl">fingerprint</span>
+</div>
+<span class="font-data text-[10px] px-2 py-1 bg-primary/5 text-primary rounded border border-primary/10">Available</span>
+</div>
+<div>
+<h3 class="font-headline text-xl text-primary mb-1">Okta</h3>
+<span class="font-label text-xs text-secondary/70 uppercase tracking-wider">Identity</span>
+<p class="font-body text-on-surface-variant mt-3 text-sm leading-relaxed">Single Sign-On and enterprise-grade user provisioning for your entire org.</p>
+</div>
+</div>
+<!-- MS Teams Card -->
+<div class="bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/20 shadow-sm flex flex-col gap-6 magnetic-hover">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 flex items-center justify-center bg-surface-container rounded-lg">
+<span class="material-symbols-outlined text-primary text-3xl">groups</span>
+</div>
+<span class="font-data text-[10px] px-2 py-1 bg-primary/5 text-primary rounded border border-primary/10">Available</span>
+</div>
+<div>
+<h3 class="font-headline text-xl text-primary mb-1">MS Teams</h3>
+<span class="font-label text-xs text-secondary/70 uppercase tracking-wider">Communication</span>
+<p class="font-body text-on-surface-variant mt-3 text-sm leading-relaxed">Collaborate on tickets and schedules without leaving your workspace.</p>
+</div>
+</div>
+<!-- Google Drive Card -->
+<div class="bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/20 shadow-sm flex flex-col gap-6 magnetic-hover">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 flex items-center justify-center bg-surface-container rounded-lg">
+<span class="material-symbols-outlined text-primary text-3xl">cloud_queue</span>
+</div>
+<span class="font-data text-[10px] px-2 py-1 bg-primary/5 text-primary rounded border border-primary/10">Available</span>
+</div>
+<div>
+<h3 class="font-headline text-xl text-primary mb-1">Google Drive</h3>
+<span class="font-label text-xs text-secondary/70 uppercase tracking-wider">Storage</span>
+<p class="font-body text-on-surface-variant mt-3 text-sm leading-relaxed">Attach schematics, manuals, and floorplans directly to operational entities.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- API Section -->
+<section class="py-32 px-6 bg-tertiary text-surface">
+<div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
+<div class="space-y-8">
+<h2 class="font-headline text-4xl md:text-5xl leading-tight">Build your own</h2>
+<p class="font-body text-xl opacity-80 max-w-lg leading-relaxed">
+                        Veltro's REST API covers 9 core entities, allowing you to build custom workflows, mobile apps, or hardware integrations tailored to your specific needs.
+                    </p>
+<a class="inline-block font-label text-secondary font-bold text-lg hover:translate-x-1 transition-transform" href="#">
+                        View API Documentation →
+                    </a>
+</div>
+<div class="relative">
+<div class="absolute -top-10 -left-10 w-40 h-40 bg-secondary/10 rounded-full blur-3xl"></div>
+<div class="bg-black p-8 rounded-xl shadow-2xl border border-white/5 relative overflow-hidden">
+<div class="flex gap-2 mb-6">
+<div class="w-3 h-3 rounded-full bg-error/40"></div>
+<div class="w-3 h-3 rounded-full bg-secondary/40"></div>
+<div class="w-3 h-3 rounded-full bg-primary-container/40"></div>
+</div>
+<pre class="font-data text-sm md:text-base leading-relaxed text-secondary-fixed"><span class="text-on-primary-container">GET</span> /api/v1/entities
+<span class="text-on-secondary-fixed-variant">{</span>
+  <span class="text-secondary">"status"</span>: <span class="text-on-primary-container">"success"</span>,
+  <span class="text-secondary">"data"</span>: {
+    <span class="text-secondary">"id"</span>: <span class="text-on-primary-container">"vel_82931"</span>,
+    <span class="text-secondary">"type"</span>: <span class="text-on-primary-container">"sensor_hub"</span>,
+    <span class="text-secondary">"connected"</span>: <span class="text-on-primary-container">true</span>
+  }
+<span class="text-on-secondary-fixed-variant">}</span></pre>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-32 px-6 bg-surface text-center">
+<div class="max-w-3xl mx-auto space-y-10">
+<h2 class="font-display italic text-4xl md:text-5xl text-primary leading-tight">
+                    Don't see your tool? Let us know.
+                </h2>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+<button class="w-full sm:w-auto px-10 py-4 rounded-full bg-primary text-on-primary font-bold magnetic-hover shadow-lg shadow-primary/10">
+                        Contact Us
+                    </button>
+<button class="w-full sm:w-auto px-10 py-4 rounded-full bg-secondary text-on-secondary font-bold magnetic-hover shadow-lg shadow-secondary/10">
+                        Start Trial
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-neutral-900 dark:bg-black w-full px-12 py-20 flex flex-col md:flex-row justify-between items-start gap-12 rounded-t-[3rem] mt-20">
+<div class="flex flex-col gap-6">
+<div class="text-xl font-bold text-white">Veltro</div>
+<p class="font-data text-xs text-stone-400 uppercase tracking-widest">© 2024 Veltro OS. System Operational.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-12">
+<div class="flex flex-col gap-4">
+<span class="font-data text-[10px] text-orange-600 uppercase tracking-widest mb-2">Product</span>
+<a class="text-stone-400 hover:text-white transition-colors hover:translate-x-1 font-medium" href="#">Features</a>
+<a class="text-stone-400 hover:text-white transition-colors hover:translate-x-1 font-medium" href="#">Pricing</a>
+</div>
+<div class="flex flex-col gap-4">
+<span class="font-data text-[10px] text-orange-600 uppercase tracking-widest mb-2">Company</span>
+<a class="text-stone-400 hover:text-white transition-colors hover:translate-x-1 font-medium" href="#">Use Cases</a>
+<a class="text-stone-400 hover:text-white transition-colors hover:translate-x-1 font-medium" href="#">Blog</a>
+</div>
+<div class="flex flex-col gap-4">
+<span class="font-data text-[10px] text-orange-600 uppercase tracking-widest mb-2">Legal</span>
+<a class="text-stone-400 hover:text-white transition-colors hover:translate-x-1 font-medium" href="#">Privacy</a>
+<a class="text-stone-400 hover:text-white transition-colors hover:translate-x-1 font-medium" href="#">Terms</a>
+</div>
+</div>
+</footer>
+</body></html>

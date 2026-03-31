@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&amp;family=Cormorant+Garamond:ital,wght@1,300;1,400;1,600&amp;family=Outfit:wght@300;400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container": "#f0eee7",
+              "surface-variant": "#e4e2dc",
+              "error": "#ba1a1a",
+              "surface-tint": "#506358",
+              "surface-container-highest": "#e4e2dc",
+              "on-surface-variant": "#424844",
+              "on-secondary": "#ffffff",
+              "secondary": "#a53c19",
+              "inverse-primary": "#b7cbbe",
+              "error-container": "#ffdad6",
+              "on-error-container": "#93000a",
+              "surface-container-high": "#eae8e1",
+              "surface-bright": "#fbf9f2",
+              "on-secondary-container": "#6e1c00",
+              "surface-dim": "#dcdad3",
+              "surface": "#fbf9f2",
+              "on-background": "#1b1c18",
+              "secondary-fixed-dim": "#ffb59f",
+              "secondary-fixed": "#ffdbd0",
+              "tertiary-container": "#3c3c3c",
+              "on-primary-fixed": "#0d1f16",
+              "primary-fixed-dim": "#b7cbbe",
+              "primary-fixed": "#d3e8d9",
+              "tertiary": "#262626",
+              "surface-container-lowest": "#ffffff",
+              "tertiary-fixed-dim": "#c8c6c5",
+              "inverse-surface": "#30312c",
+              "inverse-on-surface": "#f3f1ea",
+              "on-primary-container": "#97ab9e",
+              "on-tertiary-container": "#a8a6a6",
+              "tertiary-fixed": "#e5e2e1",
+              "on-tertiary-fixed-variant": "#474746",
+              "on-tertiary-fixed": "#1c1b1b",
+              "on-primary": "#ffffff",
+              "secondary-container": "#ff7e55",
+              "on-secondary-fixed": "#3a0a00",
+              "outline-variant": "#c3c8c2",
+              "background": "#fbf9f2",
+              "primary-container": "#2e4036",
+              "on-surface": "#1b1c18",
+              "on-secondary-fixed-variant": "#842502",
+              "primary": "#182a21",
+              "outline": "#737874",
+              "on-primary-fixed-variant": "#394b40",
+              "on-error": "#ffffff",
+              "surface-container-low": "#f6f4ec",
+              "on-tertiary": "#ffffff"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Outfit"],
+              "serif": ["Cormorant Garamond"],
+              "mono": ["IBM Plex Mono"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .noise-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Ffilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+        .magnetic-hover { transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        .magnetic-hover:hover { transform: scale(1.03); }
+        article h2 { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 1.875rem; color: #182a21; margin-top: 3rem; margin-bottom: 1rem; letter-spacing: -0.02em; }
+        article p { font-family: 'Outfit', sans-serif; font-size: 1.125rem; line-height: 1.75; color: #424844; margin-bottom: 1.5rem; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+<div class="noise-overlay"></div>
+<!-- Top Navigation -->
+<nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between max-w-5xl mx-auto rounded-full mt-6 px-6 py-2 bg-stone-50/60 dark:bg-stone-900/60 backdrop-blur-xl shadow-[0_20px_50px_rgba(24,42,33,0.04)]">
+<div class="text-2xl font-bold tracking-tight text-emerald-950 dark:text-emerald-50 font-headline">Veltro</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-emerald-900 dark:text-emerald-400 font-bold border-b-2 border-orange-600 font-mono text-sm" href="#">Blog</a>
+<a class="text-stone-600 dark:text-stone-400 font-medium hover:text-emerald-800 transition-colors font-mono text-sm" href="#">Features</a>
+<a class="text-stone-600 dark:text-stone-400 font-medium hover:text-emerald-800 transition-colors font-mono text-sm" href="#">Pricing</a>
+<a class="text-stone-600 dark:text-stone-400 font-medium hover:text-emerald-800 transition-colors font-mono text-sm" href="#">Use Cases</a>
+</div>
+<button class="bg-secondary text-white px-6 py-2 rounded-full font-bold magnetic-hover transition-transform duration-300 ease-out active:scale-95">
+            Start Trial
+        </button>
+</nav>
+<main class="pt-32 pb-24 px-6">
+<!-- Header Section -->
+<header class="max-w-[720px] mx-auto text-center mb-12">
+<span class="inline-block px-4 py-1 bg-secondary text-white rounded-full font-mono text-xs uppercase tracking-widest mb-6">Operations OS</span>
+<h1 class="text-4xl md:text-5xl font-headline font-bold text-primary leading-[1.1] tracking-tight mb-6">
+                Redefining Operational Velocity: The Architecture of Seamless Maintenance
+            </h1>
+<div class="flex items-center justify-center gap-2 font-mono text-xs text-primary/40">
+<span>Elias Thorne</span>
+<span>·</span>
+<span>March 22, 2026</span>
+<span>·</span>
+<span>8 min read</span>
+</div>
+</header>
+<!-- Featured Image -->
+<div class="max-w-[720px] mx-auto mb-16">
+<div class="rounded-lg overflow-hidden bg-surface-container shadow-lg">
+<img alt="Modern minimalist office space with natural lighting" class="w-full h-auto object-cover" data-alt="Modern minimalist office interior with large windows and clean lines" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXS4fk5krDtZiTGRtzQlPE1pev9ih3nOIAf875rPkVrTK8nQXV2cKbFFC41XOhxvxnf06aHtg09T_Hk-JiyDfz7D2dsLegDfrnanLry4lDpcsR7EG0Hurc1fza9Mtgvwg4SwTybuyCbywXUt0beaaWbRPCJR7D6kgkNGKMx8sW9VJ6gVS8Qr_6FztCDeyjxwNQ8hUfvqzWXtjjxV-v59Veb_qpbtxM06vYKj7YZmjMKvZ3gNm1r_RE_KEMc_lGNahrK139F4Q6_8mR"/>
+</div>
+</div>
+<!-- Article Content with Sticky Sidebar -->
+<div class="max-w-[1100px] mx-auto grid grid-cols-1 lg:grid-cols-[1fr_240px] gap-12 items-start">
+<!-- Article Body -->
+<article class="max-w-[720px] mx-auto lg:mx-0">
+<p>In the evolving landscape of industrial management, the term "maintenance" has long carried a heavy, reactive connotation. It suggests fixing what is broken, responding to failure, and fighting the entropy of machinery. However, at Veltro, we believe in a shift toward <em>Operations</em>—a proactive, engineered state of continuous flow.</p>
+<h2 id="the-shift">The Shift from Reactive to Proactive</h2>
+<p>When an organization operates in a reactive state, the costs are not just financial; they are cognitive. The constant stress of impending failure prevents long-term strategic thinking. Our recent studies show that organizations utilizing an integrated Operational OS reduce downtime by nearly 42% in the first quarter alone.</p>
+<blockquote class="my-10 p-8 bg-surface-container-low border-l-4 border-secondary rounded-r-xl">
+<p class="font-serif italic text-2xl text-primary leading-relaxed mb-0">
+                        "The goal is not to fix machines, but to orchestrate a symphony of mechanical reliability that becomes invisible to the end user."
+                    </p>
+</blockquote>
+<h2 id="infrastructure">The Digital Infrastructure</h2>
+<p>Modern operations require a digital ledger that acts as the single source of truth. This is where data meets design. Below is a representation of how our core engine handles priority queuing for task automation:</p>
+<div class="my-8 p-6 bg-tertiary rounded-lg font-mono text-sm text-surface-container-low overflow-x-auto">
+<pre><code>function prioritizeTask(tasks) {
+  return tasks.sort((a, b) =&gt; {
+    const scoreA = (a.criticality * 0.7) + (a.latency * 0.3);
+    const scoreB = (b.criticality * 0.7) + (b.latency * 0.3);
+    return scoreB - scoreA;
+  });
+}
+
+// Resulting in a high-velocity operation queue</code></pre>
+</div>
+<h2 id="visual-ledger">The Visual Ledger</h2>
+<p>A data-rich environment doesn't have to be cluttered. By utilizing tonal layering and intentional white space, we allow critical information to surface naturally without overwhelming the operator.</p>
+<div class="my-12 rounded-lg overflow-hidden shadow-sm bg-surface-container-high">
+<img alt="Data visualization dashboard showing growth" class="w-full opacity-90" data-alt="Clean data visualization dashboard with abstract charts" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHL8G8oO0jg2x9B6HzFiGSDOPhUKjro-Y3lsyZ43tBKXfUDis_sXniQvwIWGUzxlIya9dEcAs3-dxIGIDp0o0wVRewnwylwZewu0JezPKm--dUn9h9v2LkH-REToeHq5ydwUrv5FXuJ1p6kh8bS2WWdYT16duk-qOhQrgf6w89oj4VQmjd7862tRpqDntCVCUPa4VPRcZu4KqKusrEM3Z-m815rgnUlEs7YzT0wKH5qfQlO1sRteGeCsRVw1uh4sAdPAzM_CkDrbTK"/>
+</div>
+<p>As we look toward the future of 2026 and beyond, the distinction between software and hardware continues to blur. Your operational strategy must be as flexible as the tools you use to manage it.</p>
+</article>
+<!-- Sticky Sidebar -->
+<aside class="hidden lg:block sticky top-32">
+<div class="mb-10">
+<h4 class="font-headline font-bold text-xs uppercase tracking-widest text-primary/40 mb-6">Table of Contents</h4>
+<ul class="space-y-4 font-mono text-xs">
+<li><a class="text-secondary font-bold flex items-center gap-2" href="#the-shift"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Proactive Shift</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#infrastructure">Infrastructure</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#visual-ledger">Visual Ledger</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-headline font-bold text-xs uppercase tracking-widest text-primary/40 mb-6">Share Story</h4>
+<div class="flex gap-4">
+<button class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary hover:bg-secondary hover:text-white transition-all duration-300">
+<span class="material-symbols-outlined text-sm">share</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary hover:bg-secondary hover:text-white transition-all duration-300">
+<span class="material-symbols-outlined text-sm">link</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary hover:bg-secondary hover:text-white transition-all duration-300">
+<span class="material-symbols-outlined text-sm">mail</span>
+</button>
+</div>
+</div>
+</aside>
+</div>
+<!-- Related Posts -->
+<section class="max-w-5xl mx-auto mt-24 pt-16 border-t border-surface-variant">
+<h3 class="font-headline font-bold text-2xl text-primary mb-10">Continue Reading</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Card 1 -->
+<a class="group" href="#">
+<div class="aspect-[16/10] rounded-lg overflow-hidden mb-4 bg-surface-container">
+<img alt="Team meeting" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Team collaborating around a bright conference table" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzqGOLLZxGo8DOcubqwxxbt5EnGOzwBG2bzYP9sQ43Pak0xTGicEPUgYj-p_JcsdNrwB0DvdeTh4Y_4_iglBVOw1lwFbvKoC_hKcXuL_Zo2kWVCHssh6hIieHB1DJJgFBZ88gs3AXUc0Rf7sRRzvXxFn2UfHH39KmHGY4eLFcI6tlvDG0Roay-YwJA7L2RMXxAIf2LsslcBS-Bew8ivW-J6RQTzsBWCib2yqINLEya0kWFRi3VsmB_dpoypEI9O1wbdn3TnPLkjFQB"/>
+</div>
+<span class="font-mono text-[10px] uppercase tracking-widest text-secondary mb-2 block">Case Study</span>
+<h4 class="font-headline font-bold text-lg text-primary group-hover:text-secondary transition-colors">How Zenith Labs Scaled Efficiency by 300%</h4>
+</a>
+<!-- Card 2 -->
+<a class="group" href="#">
+<div class="aspect-[16/10] rounded-lg overflow-hidden mb-4 bg-surface-container">
+<img alt="Cyber security concept" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Abstract glowing technology and server lines" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHarC_-HjerMXDljkIS6JHZ6cYew7FdT93aXAaPTyfoNWXE0WtHH1I9xUMLDuxqjcvw0kuiCspK6Y1B8ymbRfqX0apBumisGYMHaseJTidOzdn7N9IRQgaHGI3XCKelUAR2AFYIwYYUwOhe-m2HDskZuZEhXaOUQWOyRiFlkvivXdjXJmVMbEhSQi7XvqhYxcYWmsQ3txoD-5p2HIaRmrQyDvKyO0jyS43KOUgFCCFiPiFslJyPrDjExQltDon0kLiRy-ul55w6PWt"/>
+</div>
+<span class="font-mono text-[10px] uppercase tracking-widest text-secondary mb-2 block">Engineering</span>
+<h4 class="font-headline font-bold text-lg text-primary group-hover:text-secondary transition-colors">The Physics of Low-Latency Data Flow</h4>
+</a>
+<!-- Card 3 -->
+<a class="group" href="#">
+<div class="aspect-[16/10] rounded-lg overflow-hidden mb-4 bg-surface-container">
+<img alt="Strategic planning" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Close up of architect drawing floor plans" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKI3oQpiFn0gULQ2vrnlURDXtxX0rQLnvQoK-lrnQhalEsR7RlWRXV238q0rhAApL6b_iTZ-k0c-ejsvpS2sQu595DiugIe7s_Lf4Fe228TlMdiylCQzQrSem-T_iWlwmPVWcpZd22yqzVCDOV-wr9yMu-1YUiuwobtQ4Y4_mSFoC9EoeAGORvI9H1Y2L-uh2fA-F2U4QhzJUgAEcqDmEPQsicWcITKzlXVK6eg2qPn3f85XFRCzuB_uadAROBMKoJ1GPFocHxROiT"/>
+</div>
+<span class="font-mono text-[10px] uppercase tracking-widest text-secondary mb-2 block">Leadership</span>
+<h4 class="font-headline font-bold text-lg text-primary group-hover:text-secondary transition-colors">Beyond Maintenance: Leading the OS Era</h4>
+</a>
+</div>
+</section>
+<!-- CTA Banner -->
+<section class="max-w-5xl mx-auto mt-24">
+<div class="bg-primary-container rounded-lg p-12 md:p-20 text-center relative overflow-hidden">
+<div class="relative z-10">
+<h2 class="font-headline font-bold text-3xl md:text-4xl text-white mb-6">Want to see Veltro in action?</h2>
+<p class="text-on-primary-container text-lg max-w-xl mx-auto mb-10">Experience the operational sophistication that elite organizations use to maintain a competitive edge.</p>
+<button class="bg-secondary text-white px-10 py-4 rounded-full font-bold text-lg magnetic-hover shadow-xl">
+                        Start Your 14-Day Trial
+                    </button>
+</div>
+<!-- Abstract BG Elements -->
+<div class="absolute top-0 right-0 w-64 h-64 bg-secondary opacity-10 blur-[100px] -mr-32 -mt-32"></div>
+<div class="absolute bottom-0 left-0 w-64 h-64 bg-white opacity-5 blur-[80px] -ml-32 -mb-32"></div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-neutral-900 w-full px-12 py-20 flex flex-col md:flex-row justify-between items-start gap-12 rounded-t-[3rem] mt-20">
+<div class="space-y-6">
+<div class="text-xl font-bold text-white font-headline">Veltro</div>
+<p class="text-stone-400 font-body max-w-xs leading-relaxed">The Architectural Ledger for Modern Operations. Engineered for precision, designed for clarity.</p>
+<div class="font-mono text-[10px] text-orange-600 tracking-tighter uppercase">
+                © 2024 Veltro OS. System Operational.
+            </div>
+</div>
+<div class="grid grid-cols-2 gap-16">
+<div class="space-y-4">
+<h5 class="font-mono text-[10px] text-white uppercase tracking-widest opacity-50">Platform</h5>
+<ul class="space-y-2">
+<li><a class="text-stone-400 hover:text-white transition-colors font-body text-sm hover:translate-x-1 inline-block" href="#">Features</a></li>
+<li><a class="text-stone-400 hover:text-white transition-colors font-body text-sm hover:translate-x-1 inline-block" href="#">Pricing</a></li>
+<li><a class="text-stone-400 hover:text-white transition-colors font-body text-sm hover:translate-x-1 inline-block" href="#">Use Cases</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h5 class="font-mono text-[10px] text-white uppercase tracking-widest opacity-50">Company</h5>
+<ul class="space-y-2">
+<li><a class="text-stone-400 hover:text-white transition-colors font-body text-sm hover:translate-x-1 inline-block" href="#">Blog</a></li>
+<li><a class="text-stone-400 hover:text-white transition-colors font-body text-sm hover:translate-x-1 inline-block" href="#">Privacy</a></li>
+<li><a class="text-stone-400 hover:text-white transition-colors font-body text-sm hover:translate-x-1 inline-block" href="#">Terms</a></li>
+</ul>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-orange-600 animate-pulse"></span>
+<span class="font-mono text-[10px] text-stone-400">All Systems Nominal</span>
+</div>
+</footer>
+</body></html>

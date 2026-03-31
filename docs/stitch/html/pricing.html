@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pricing | Veltro OS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&amp;family=Outfit:wght@300;400;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Cormorant+Garamond:ital,wght@1,400;1,600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "secondary-fixed-dim": "#ffb59f",
+                        "primary": "#182a21",
+                        "on-primary-container": "#97ab9e",
+                        "on-error": "#ffffff",
+                        "on-background": "#1b1c18",
+                        "on-tertiary-fixed-variant": "#474746",
+                        "on-primary": "#ffffff",
+                        "outline": "#737874",
+                        "primary-container": "#2e4036",
+                        "inverse-primary": "#b7cbbe",
+                        "error": "#ba1a1a",
+                        "surface-tint": "#506358",
+                        "background": "#fbf9f2",
+                        "surface-bright": "#fbf9f2",
+                        "tertiary-fixed": "#e5e2e1",
+                        "on-primary-fixed": "#0d1f16",
+                        "secondary-fixed": "#ffdbd0",
+                        "surface-variant": "#e4e2dc",
+                        "tertiary": "#262626",
+                        "on-secondary-fixed-variant": "#842502",
+                        "inverse-on-surface": "#f3f1ea",
+                        "surface-container-highest": "#e4e2dc",
+                        "primary-fixed": "#d3e8d9",
+                        "tertiary-container": "#3c3c3c",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "surface-container-high": "#eae8e1",
+                        "surface-container-low": "#f6f4ec",
+                        "surface-container": "#f0eee7",
+                        "secondary-container": "#ff7e55",
+                        "secondary": "#a53c19",
+                        "outline-variant": "#c3c8c2",
+                        "on-secondary-container": "#6e1c00",
+                        "on-primary-fixed-variant": "#394b40",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "surface": "#fbf9f2",
+                        "primary-fixed-dim": "#b7cbbe",
+                        "inverse-surface": "#30312c",
+                        "surface-dim": "#dcdad3",
+                        "on-surface-variant": "#424844",
+                        "on-tertiary-container": "#a8a6a6",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface": "#1b1c18",
+                        "on-secondary-fixed": "#3a0a00",
+                        "on-error-container": "#93000a",
+                        "on-secondary": "#ffffff",
+                        "error-container": "#ffdad6"
+                    },
+                    fontFamily: {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Outfit"],
+                        "label": ["IBM Plex Mono"],
+                        "display": ["Cormorant Garamond"]
+                    },
+                    borderRadius: { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        .paper-grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.05;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-secondary/30">
+<!-- SVG Grain Overlay -->
+<svg class="paper-grain">
+<filter id="noiseFilter">
+<feturbulence basefrequency="0.6" numoctaves="3" stitchtiles="stitch" type="fractalNoise"></feturbulence>
+</filter>
+<rect filter="url(#noiseFilter)" height="100%" width="100%"></rect>
+</svg>
+<!-- Navigation Pill -->
+<nav class="fixed top-0 left-1/2 -translate-x-1/2 z-50 flex items-center gap-8 bg-transparent backdrop-blur-xl transition-all duration-500 rounded-full mt-6 mx-auto w-fit px-8 py-3 shadow-[0_40px_60px_-15px_rgba(24,42,33,0.04)]">
+<a class="text-2xl font-bold tracking-tighter text-primary font-headline" href="#">Veltro</a>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-primary opacity-80 hover:opacity-100 hover:scale-105 transition-all duration-300" href="#">Features</a>
+<a class="text-secondary font-bold border-b-2 border-secondary pb-1 hover:scale-105 transition-all duration-300" href="#">Pricing</a>
+<a class="text-primary opacity-80 hover:opacity-100 hover:scale-105 transition-all duration-300" href="#">Use Cases</a>
+<a class="text-primary opacity-80 hover:opacity-100 hover:scale-105 transition-all duration-300" href="#">Blog</a>
+</div>
+<button class="bg-secondary text-white rounded-full px-6 py-2 font-bold hover:scale-105 transition-transform duration-300 ease-out shadow-lg shadow-secondary/20">
+            Start Trial
+        </button>
+</nav>
+<!-- Hero Section -->
+<header class="h-[409px] flex flex-col items-center justify-center text-center px-6 pt-24 bg-surface">
+<p class="font-headline text-lg md:text-xl text-primary/60 tracking-tight mb-2">Simple, transparent</p>
+<h1 class="font-display italic text-6xl md:text-8xl text-primary leading-none">Pricing.</h1>
+<p class="mt-6 text-primary/50 text-lg md:text-xl max-w-xl">Start where you are. Scale as you grow. No surprises.</p>
+</header>
+<!-- Pricing Tiers Section -->
+<section class="py-24 px-6 md:px-12 bg-surface">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+<!-- Card 1: STARTER -->
+<div class="bg-surface-container-lowest rounded-xl p-10 flex flex-col border border-outline-variant/10 shadow-[0_40px_60px_-15px_rgba(24,42,33,0.04)] hover:scale-[1.02] transition-transform duration-500">
+<span class="font-label text-xs uppercase tracking-widest text-primary/50 mb-4">STARTER</span>
+<p class="text-primary/70 text-sm mb-2">Small teams getting organized</p>
+<h3 class="font-display italic text-3xl text-primary mb-8 leading-tight">Get your team on the same page</h3>
+<ul class="space-y-4 mb-12 flex-grow">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+<span class="text-on-surface-variant">Work Orders</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+<span class="text-on-surface-variant">Assets &amp; Locations</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+<span class="text-on-surface-variant">1 site</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+<span class="text-on-surface-variant">Up to 5 users</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+<span class="text-on-surface-variant">Email support</span>
+</li>
+</ul>
+<button class="w-full py-4 rounded-full border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white transition-all duration-300">
+                    Start Trial
+                </button>
+</div>
+<!-- Card 2: OPERATIONS (Highlighted) -->
+<div class="relative bg-primary text-white rounded-xl p-10 flex flex-col scale-105 shadow-[0_60px_80px_-20px_rgba(24,42,33,0.15)] z-10 border border-primary-container">
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-secondary text-white text-[10px] font-label font-bold px-4 py-1 rounded-full tracking-widest">
+                    MOST POPULAR
+                </div>
+<span class="font-label text-xs uppercase tracking-widest text-white/50 mb-4">OPERATIONS</span>
+<p class="text-white/70 text-sm mb-2">Growing operations that need visibility</p>
+<h3 class="font-display italic text-3xl text-white mb-8 leading-tight">See everything. Control everything.</h3>
+<ul class="space-y-4 mb-12 flex-grow">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-xl" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span class="text-white">Everything in Starter</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-xl">check_circle</span>
+<span class="text-white/90">Inspections &amp; Findings</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-xl">check_circle</span>
+<span class="text-white/90">Incidents &amp; Corrective Actions</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-xl">check_circle</span>
+<span class="text-white/90">Inventory &amp; Parts</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-xl">check_circle</span>
+<span class="text-white/90">PM Schedules</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-xl">check_circle</span>
+<span class="text-white/90">Dashboards &amp; Analytics</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-xl">check_circle</span>
+<span class="text-white/90">Unlimited users</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-xl">check_circle</span>
+<span class="text-white/90">Priority support</span>
+</li>
+</ul>
+<button class="w-full py-4 rounded-full bg-secondary text-white font-bold hover:scale-[1.03] active:scale-95 transition-all duration-300 shadow-xl shadow-secondary/20 overflow-hidden relative group">
+<span class="relative z-10">Start Trial</span>
+<div class="absolute inset-0 bg-secondary-container transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
+</button>
+</div>
+<!-- Card 3: ENTERPRISE -->
+<div class="bg-surface-container-lowest rounded-xl p-10 flex flex-col border border-outline-variant/10 shadow-[0_40px_60px_-15px_rgba(24,42,33,0.04)] hover:scale-[1.02] transition-transform duration-500">
+<span class="font-label text-xs uppercase tracking-widest text-primary/50 mb-4">ENTERPRISE</span>
+<p class="text-primary/70 text-sm mb-2">Multi-site orgs with compliance needs</p>
+<h3 class="font-display italic text-3xl text-primary mb-8 leading-tight">Scale with confidence</h3>
+<ul class="space-y-4 mb-12 flex-grow">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1;">layers</span>
+<span class="text-on-surface-variant font-medium">Everything in Operations</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+<span class="text-on-surface-variant">Multi-site management</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+<span class="text-on-surface-variant">API access</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+<span class="text-on-surface-variant">Audit logs &amp; compliance</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+<span class="text-on-surface-variant">SSO / SAML</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+<span class="text-on-surface-variant">Dedicated account manager</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+<span class="text-on-surface-variant">Custom integrations</span>
+</li>
+</ul>
+<button class="w-full py-4 rounded-full border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white transition-all duration-300">
+                    Talk to Us
+                </button>
+</div>
+</div>
+<div class="mt-16 text-center">
+<p class="font-label text-xs text-primary/50 tracking-wider">All plans include a 14-day trial. No credit card required.</p>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="py-32 px-6 bg-surface-container-low">
+<div class="max-w-3xl mx-auto">
+<h2 class="font-headline text-4xl text-primary font-bold mb-12 text-center">Common questions</h2>
+<div class="space-y-4">
+<!-- FAQ Item 1 -->
+<details class="group bg-surface-container-lowest rounded-lg border border-outline-variant/10 overflow-hidden" open="">
+<summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+<span class="font-headline font-bold text-primary">Can I switch plans later?</span>
+<span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180">expand_more</span>
+</summary>
+<div class="px-6 pb-6 text-on-surface-variant leading-relaxed">
+                        Yes. Upgrade or downgrade anytime. Changes take effect on your next billing cycle.
+                    </div>
+</details>
+<!-- FAQ Item 2 -->
+<details class="group bg-surface-container-lowest rounded-lg border border-outline-variant/10 overflow-hidden">
+<summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+<span class="font-headline font-bold text-primary">What happens after my trial?</span>
+<span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180">expand_more</span>
+</summary>
+<div class="px-6 pb-6 text-on-surface-variant leading-relaxed">
+                        You choose a plan or your account pauses. No surprise charges. Your data stays safe for 30 days.
+                    </div>
+</details>
+<!-- FAQ Item 3 -->
+<details class="group bg-surface-container-lowest rounded-lg border border-outline-variant/10 overflow-hidden">
+<summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+<span class="font-headline font-bold text-primary">Do you offer discounts for annual billing?</span>
+<span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180">expand_more</span>
+</summary>
+<div class="px-6 pb-6 text-on-surface-variant leading-relaxed">
+                        Yes. Annual plans save 20% compared to monthly.
+                    </div>
+</details>
+<!-- FAQ Item 4 -->
+<details class="group bg-surface-container-lowest rounded-lg border border-outline-variant/10 overflow-hidden">
+<summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+<span class="font-headline font-bold text-primary">Is my data secure?</span>
+<span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180">expand_more</span>
+</summary>
+<div class="px-6 pb-6 text-on-surface-variant leading-relaxed">
+                        Absolutely. Row-level security, encrypted at rest and in transit, SOC 2 compliance in progress.
+                    </div>
+</details>
+<!-- FAQ Item 5 -->
+<details class="group bg-surface-container-lowest rounded-lg border border-outline-variant/10 overflow-hidden">
+<summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+<span class="font-headline font-bold text-primary">Can I import data from my current system?</span>
+<span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180">expand_more</span>
+</summary>
+<div class="px-6 pb-6 text-on-surface-variant leading-relaxed">
+                        Yes. We offer CSV import and a dedicated onboarding specialist for Operations and Enterprise plans.
+                    </div>
+</details>
+</div>
+</div>
+</section>
+<!-- Final CTA Section -->
+<section class="bg-tertiary text-surface-container-lowest py-32 px-6">
+<div class="max-w-4xl mx-auto text-center">
+<h2 class="font-headline text-5xl md:text-6xl font-bold mb-6 tracking-tight">Still deciding?</h2>
+<p class="text-surface-container-low/60 text-xl mb-12 max-w-2xl mx-auto">Start your trial and explore at your own pace. See how Veltro elevates your operational velocity.</p>
+<button class="bg-secondary text-white rounded-full px-10 py-5 text-lg font-bold hover:scale-105 hover:bg-secondary-container transition-all duration-300 shadow-2xl shadow-black/40">
+                Start Your 14-Day Trial
+            </button>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full px-12 md:px-24 flex flex-col md:flex-row justify-between bg-tertiary dark:bg-[#0a0a0a] rounded-t-[4rem] pt-20 pb-12 text-surface-container-lowest">
+<div class="mb-12 md:mb-0">
+<h2 class="text-4xl font-bold text-surface-container-lowest mb-2 font-headline">Veltro</h2>
+<p class="text-surface-container-lowest/60 font-label text-sm uppercase tracking-widest mt-4">Velocity + Control.</p>
+<div class="flex items-center gap-2 mt-8">
+<div class="w-2 h-2 bg-secondary rounded-full animate-pulse"></div>
+<span class="text-xs font-label text-surface-container-lowest/40">System Status: Operational</span>
+</div>
+</div>
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-12">
+<div>
+<h4 class="font-headline font-bold mb-6">Product</h4>
+<ul class="space-y-4">
+<li><a class="text-surface-container-lowest/60 hover:text-surface-container-lowest transition-transform duration-200 hover:translate-x-1 block" href="#">Features</a></li>
+<li><a class="text-surface-container-lowest/60 hover:text-surface-container-lowest transition-transform duration-200 hover:translate-x-1 block" href="#">Integrations</a></li>
+<li><a class="text-secondary font-bold" href="#">Pricing</a></li>
+<li><a class="text-surface-container-lowest/60 hover:text-surface-container-lowest transition-transform duration-200 hover:translate-x-1 block" href="#">Mobile App</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-headline font-bold mb-6">Company</h4>
+<ul class="space-y-4">
+<li><a class="text-surface-container-lowest/60 hover:text-surface-container-lowest transition-transform duration-200 hover:translate-x-1 block" href="#">About Us</a></li>
+<li><a class="text-surface-container-lowest/60 hover:text-surface-container-lowest transition-transform duration-200 hover:translate-x-1 block" href="#">Careers</a></li>
+<li><a class="text-surface-container-lowest/60 hover:text-surface-container-lowest transition-transform duration-200 hover:translate-x-1 block" href="#">Customers</a></li>
+<li><a class="text-surface-container-lowest/60 hover:text-surface-container-lowest transition-transform duration-200 hover:translate-x-1 block" href="#">Brand</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-headline font-bold mb-6">Resources</h4>
+<ul class="space-y-4">
+<li><a class="text-surface-container-lowest/60 hover:text-surface-container-lowest transition-transform duration-200 hover:translate-x-1 block" href="#">Blog</a></li>
+<li><a class="text-surface-container-lowest/60 hover:text-surface-container-lowest transition-transform duration-200 hover:translate-x-1 block" href="#">Support Center</a></li>
+<li><a class="text-surface-container-lowest/60 hover:text-surface-container-lowest transition-transform duration-200 hover:translate-x-1 block" href="#">Documentation</a></li>
+<li><a class="text-surface-container-lowest/60 hover:text-surface-container-lowest transition-transform duration-200 hover:translate-x-1 block" href="#">API Reference</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-headline font-bold mb-6">Legal</h4>
+<ul class="space-y-4">
+<li><a class="text-surface-container-lowest/60 hover:text-surface-container-lowest transition-transform duration-200 hover:translate-x-1 block" href="#">Privacy Policy</a></li>
+<li><a class="text-surface-container-lowest/60 hover:text-surface-container-lowest transition-transform duration-200 hover:translate-x-1 block" href="#">Terms of Service</a></li>
+<li><a class="text-surface-container-lowest/60 hover:text-surface-container-lowest transition-transform duration-200 hover:translate-x-1 block" href="#">Cookie Policy</a></li>
+<li><a class="text-surface-container-lowest/60 hover:text-surface-container-lowest transition-transform duration-200 hover:translate-x-1 block" href="#">Security</a></li>
+</ul>
+</div>
+</div>
+</footer>
+<div class="w-full bg-tertiary px-12 md:px-24 pb-12 flex flex-col md:flex-row justify-between items-center text-surface-container-lowest/30 font-label text-[10px] tracking-widest border-t border-white/5 pt-8">
+<p>© 2024 VELTRO OS. ALL RIGHTS RESERVED.</p>
+<p>OPERATIONAL SOPHISTICATION ENGINEERED IN LONDON.</p>
+</div>
+</body></html>

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Veltro | The Operations OS</title>
+<meta content="The operations platform for teams who run on precision. Assets, work, inspections, compliance — one place, total clarity." name="description"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&amp;family=Cormorant+Garamond:ital,wght@1,400;1,600&amp;family=Outfit:wght@300;400;500&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "inverse-surface": "#30312c",
+                        "surface-tint": "#506358",
+                        "secondary-fixed": "#ffdbd0",
+                        "on-primary-container": "#97ab9e",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary": "#262626",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#f3f1ea",
+                        "surface-container-high": "#eae8e1",
+                        "surface": "#fbf9f2",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#dcdad3",
+                        "on-tertiary": "#ffffff",
+                        "on-surface": "#1b1c18",
+                        "surface-container": "#f0eee7",
+                        "on-secondary-container": "#6e1c00",
+                        "surface-bright": "#fbf9f2",
+                        "background": "#fbf9f2",
+                        "primary-fixed": "#d3e8d9",
+                        "surface-container-low": "#f6f4ec",
+                        "secondary-container": "#ff7e55",
+                        "on-primary": "#ffffff",
+                        "surface-container-highest": "#e4e2dc",
+                        "outline": "#737874",
+                        "on-surface-variant": "#424844",
+                        "on-secondary-fixed-variant": "#842502",
+                        "on-background": "#1b1c18",
+                        "on-tertiary-container": "#a8a6a6",
+                        "on-primary-fixed": "#0d1f16",
+                        "tertiary-fixed": "#e5e2e1",
+                        "surface-variant": "#e4e2dc",
+                        "secondary-fixed-dim": "#ffb59f",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#b7cbbe",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed-dim": "#b7cbbe",
+                        "on-tertiary-fixed-variant": "#474746",
+                        "secondary": "#a53c19",
+                        "primary-container": "#2e4036",
+                        "on-secondary-fixed": "#3a0a00",
+                        "outline-variant": "#c3c8c2",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "primary": "#182a21",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "tertiary-container": "#3c3c3c",
+                        "on-primary-fixed-variant": "#394b40",
+                        "moss": "#182a21",
+                        "clay": "#cc5833",
+                        "cream": "#fbf9f2",
+                        "charcoal": "#1a1a1a"
+                    },
+                    fontFamily: {
+                        "headline": ["Plus Jakarta Sans", "sans-serif"],
+                        "display": ["Cormorant Garamond", "serif"],
+                        "body": ["Outfit", "sans-serif"],
+                        "label": ["IBM Plex Mono", "monospace"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .noise-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+        .magnetic-hover {
+            transition: transform 0.3s cubic-bezier(0.33, 1, 0.68, 1);
+        }
+        .magnetic-hover:hover {
+            transform: scale(1.03);
+        }
+        .reveal-text span {
+            display: inline-block;
+            opacity: 0.2;
+            transition: opacity 0.5s ease;
+        }
+        .sticky-card {
+            top: 10vh;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-secondary selection:text-white">
+<div class="noise-overlay"></div>
+<!-- Navigation -->
+<nav class="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-8 py-3 rounded-full mt-4 mx-auto max-w-5xl bg-cream/60 dark:bg-charcoal/60 backdrop-blur-xl shadow-sm shadow-moss/5">
+<div class="text-2xl font-bold tracking-tighter text-moss dark:text-cream-50 font-headline">Veltro</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-moss font-bold border-b-2 border-clay pb-1 hover:scale-[1.03] transition-all duration-300" href="#">Features</a>
+<a class="text-moss/70 font-medium hover:scale-[1.03] hover:text-clay transition-all duration-300" href="#">Pricing</a>
+<a class="text-moss/70 font-medium hover:scale-[1.03] hover:text-clay transition-all duration-300" href="#">Use Cases</a>
+<a class="text-moss/70 font-medium hover:scale-[1.03] hover:text-clay transition-all duration-300" href="#">Blog</a>
+</div>
+<button class="bg-clay text-white px-6 py-2 rounded-full font-bold magnetic-hover shadow-lg shadow-clay/20">Start Trial</button>
+</nav>
+<!-- SECTION A: HERO -->
+<section class="relative h-[1024px] w-full overflow-hidden flex flex-col justify-end pb-24 px-12">
+<div class="absolute inset-0 z-[-1]">
+<img alt="Modern clean industrial facility interior with warm lighting" class="w-full h-full object-cover" data-alt="Clean industrial space with natural light and warm tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCii8keG5An5FdSy-jSRfI1qtXOgKWEPuPBSpzr2Gz1U7OngKB_jQZQsdAxTKqyiOQCveeql7NVLYtpVYh1ZBN3M3mxPrE_gdggpgGnCp24QvkBAlh2eO2jc7N4ccTHD1dnJdTay-zHypGkqGtxyfAiLIOKnbvZU_ptv4fVC-daz22RCTdJs-JqEwpc_VHHHi6dbGPK0Azlsv92oRZpuFZlhCPlbNsLOqwFbqf1cyqIM7EwT9qK5XthH6ZgqZMD_CuxZIiENAHB54sG"/>
+<div class="absolute inset-0 bg-gradient-to-t from-moss via-moss/60 to-transparent"></div>
+</div>
+<div class="max-w-4xl space-y-4">
+<p class="font-headline text-2xl md:text-3xl text-cream-50 font-bold tracking-tight">Your operation has a</p>
+<h1 class="font-display italic text-[6rem] md:text-[10rem] text-cream leading-[0.85] tracking-tight">Rhythm.</h1>
+<p class="font-body text-lg md:text-xl text-cream/70 max-w-xl pt-4">
+                The operations platform for teams who run on precision. Assets, work, inspections, compliance — one place, total clarity.
+            </p>
+<div class="pt-8 flex items-center gap-6">
+<button class="bg-secondary text-white px-10 py-4 rounded-full font-bold text-lg magnetic-hover shadow-xl shadow-clay/30">
+                    Start Your 14-Day Trial
+                </button>
+</div>
+</div>
+<div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+<span class="material-symbols-outlined text-cream text-4xl" data-icon="expand_more">expand_more</span>
+</div>
+</section>
+<!-- SECTION B: FEATURES -->
+<section class="bg-surface py-32 px-12">
+<div class="max-w-7xl mx-auto">
+<h2 class="font-headline text-moss text-5xl font-bold mb-20 tracking-tight">How it works</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<!-- Card 1 -->
+<div class="group">
+<div class="aspect-[4/5] bg-white rounded-xl shadow-sm shadow-moss/5 p-8 flex flex-col justify-center overflow-hidden relative border border-outline-variant/10">
+<div class="space-y-4">
+<div class="bg-surface-container-high p-6 rounded-lg shadow-md translate-y-4 opacity-40 scale-90">
+<p class="font-label text-xs mb-2 opacity-50">#0021</p>
+<p class="font-headline font-bold">Fire Panel — Complete</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-xl ring-1 ring-clay/10 -translate-y-2 z-10 relative">
+<div class="flex justify-between items-start mb-2">
+<p class="font-label text-xs text-clay font-bold tracking-widest">URGENT</p>
+<span class="material-symbols-outlined text-clay" data-icon="error">error</span>
+</div>
+<p class="font-headline font-bold text-xl">Roof Leak — Urgent</p>
+</div>
+<div class="bg-surface-container-low p-6 rounded-lg shadow-md -translate-y-8 opacity-60 scale-95">
+<p class="font-label text-xs mb-2 opacity-50">#0023</p>
+<p class="font-headline font-bold">HVAC Unit #7 — Scheduled</p>
+</div>
+</div>
+</div>
+<div class="mt-8">
+<h3 class="font-headline text-2xl font-bold text-moss">Keep work moving</h3>
+<p class="font-body text-moss/60 mt-2 leading-relaxed">Automated workflows that never miss a beat or a boiler.</p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group">
+<div class="aspect-[4/5] bg-charcoal rounded-xl shadow-sm p-8 flex flex-col border border-white/5">
+<div class="flex items-center gap-2 mb-6">
+<div class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
+<span class="font-label text-xs text-cream/50 uppercase tracking-widest">Live Feed</span>
+</div>
+<div class="font-label text-cream/80 text-sm space-y-4 leading-relaxed">
+<p>&gt; Asset registered: Boiler Room #3...</p>
+<p>&gt; Inspection completed: Building A...</p>
+<p>&gt; Work order assigned: Maria T...</p>
+<p class="inline-block border-r-2 border-clay pr-1 animate-pulse">_</p>
+</div>
+</div>
+<div class="mt-8">
+<h3 class="font-headline text-2xl font-bold text-moss">One shared place</h3>
+<p class="font-body text-moss/60 mt-2 leading-relaxed">A real-time ledger for every action taken across your site.</p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group">
+<div class="aspect-[4/5] bg-surface-container rounded-xl shadow-sm p-8 flex flex-col justify-center border border-outline-variant/20 overflow-hidden">
+<div class="grid grid-cols-7 gap-2 mb-8">
+<div class="text-center text-[10px] font-label opacity-40">S</div>
+<div class="text-center text-[10px] font-label opacity-40">M</div>
+<div class="text-center text-[10px] font-label opacity-40">T</div>
+<div class="text-center text-[10px] font-label opacity-40 text-clay font-bold">W</div>
+<div class="text-center text-[10px] font-label opacity-40">T</div>
+<div class="text-center text-[10px] font-label opacity-40">F</div>
+<div class="text-center text-[10px] font-label opacity-40">S</div>
+<div class="aspect-square rounded-md bg-white"></div>
+<div class="aspect-square rounded-md bg-white"></div>
+<div class="aspect-square rounded-md bg-white"></div>
+<div class="aspect-square rounded-md bg-clay/20 ring-2 ring-clay/40 flex items-center justify-center">
+<div class="w-1.5 h-1.5 rounded-full bg-clay"></div>
+</div>
+<div class="aspect-square rounded-md bg-white"></div>
+<div class="aspect-square rounded-md bg-white"></div>
+<div class="aspect-square rounded-md bg-white"></div>
+</div>
+<div class="flex flex-col items-center">
+<span class="font-label text-[10px] uppercase tracking-widest mb-4 opacity-50">Inspection Protocol</span>
+<button class="bg-clay text-white px-6 py-3 rounded-full font-headline text-sm font-bold w-full active:scale-95 transition-transform">Schedule</button>
+</div>
+</div>
+<div class="mt-8">
+<h3 class="font-headline text-2xl font-bold text-moss">Turn findings into action</h3>
+<p class="font-body text-moss/60 mt-2 leading-relaxed">Connect inspection results directly to maintenance cycles.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION C: PHILOSOPHY -->
+<section class="bg-charcoal py-48 px-12 relative overflow-hidden">
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<img alt="Faint texture of moss and fern" class="w-full h-full object-cover grayscale" data-alt="Abstract dark organic texture of forest plants" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADeDdtlNWv3yayGit59Z7YK0wWC7I5V9JHntmR-r_xL5X51cLdXFhoO1jX6cwc57n17Z086gKLUJYvNTdh_Pz6GOOG1BbDp6JbI5Jzy4vhmd27n7Rl6o0ZNtY8CghGM9loOBT5i6500gvbuds15pB7lkhmKAgjMsCSWWglcSsgBodTRggub9jOUlEAQ8lo1ntbGMcqdlp4RO3tvHJYyb3Bp8O-7Ak2RQIYu_pud55vDmXe5X7M1xLkyIPvU1uxuDVwMcL-ii1WpttT"/>
+</div>
+<div class="max-w-5xl mx-auto text-center relative z-10 space-y-8">
+<p class="font-body text-2xl text-white/60 tracking-tight">Most operations focus on: managing the chaos.</p>
+<h2 class="font-display italic text-5xl md:text-7xl text-white leading-tight">
+                We focus on: <span class="text-clay">eliminating it.</span>
+</h2>
+</div>
+</section>
+<!-- SECTION D: PROTOCOL (Sticky Stacking) -->
+<section class="bg-surface-container-low px-12 py-32">
+<div class="max-w-6xl mx-auto">
+<div class="space-y-[204px]">
+<!-- Card 1 -->
+<div class="sticky top-[153px] bg-cream rounded-xl p-16 h-[716px] flex flex-col md:flex-row gap-12 items-center shadow-2xl shadow-moss/10 border border-outline-variant/10">
+<div class="flex-1 space-y-6">
+<p class="font-label text-clay text-2xl font-bold">01</p>
+<h3 class="font-headline text-6xl font-extrabold text-moss tracking-tighter">Capture</h3>
+<p class="font-body text-xl text-moss/70 leading-relaxed">
+                            Every asset, every reading, every finding — logged once, visible everywhere. Veltro turns human observation into structured, actionable data.
+                        </p>
+</div>
+<div class="flex-1 flex justify-center">
+<div class="relative w-64 h-64 border-2 border-moss/10 rounded-full flex items-center justify-center animate-[spin_20s_linear_infinite]">
+<div class="absolute inset-4 border border-moss/20 rounded-full"></div>
+<div class="absolute inset-8 border-2 border-moss/40 rounded-full"></div>
+<div class="w-4 h-4 bg-moss rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="sticky top-[204px] bg-moss rounded-xl p-16 h-[716px] flex flex-col md:flex-row gap-12 items-center shadow-2xl text-white">
+<div class="flex-1 space-y-6">
+<p class="font-label text-clay text-2xl font-bold">02</p>
+<h3 class="font-headline text-6xl font-extrabold tracking-tighter">Direct</h3>
+<p class="font-body text-xl text-cream/70 leading-relaxed">
+                            Work orders flow to the right person at the right time. Intelligent routing ensures urgency is handled and routine is never forgotten.
+                        </p>
+</div>
+<div class="flex-1 flex justify-center relative overflow-hidden w-full h-full max-h-64">
+<div class="w-full h-px bg-clay/30 absolute top-1/2 -translate-y-1/2"></div>
+<div class="w-full h-1 bg-clay shadow-[0_0_20px_#cc5833] absolute top-1/2 -translate-y-1/2 animate-[bounce_3s_infinite]"></div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="sticky top-[256px] bg-charcoal rounded-xl p-16 h-[716px] flex flex-col md:flex-row gap-12 items-center shadow-2xl text-cream">
+<div class="flex-1 space-y-6">
+<p class="font-label text-clay text-2xl font-bold">03</p>
+<h3 class="font-headline text-6xl font-extrabold tracking-tighter">Reflect</h3>
+<p class="font-body text-xl text-cream/70 leading-relaxed">
+                            Dashboards that show what happened, what's coming, and where to improve. Moving from reactive maintenance to proactive operational excellence.
+                        </p>
+</div>
+<div class="flex-1 flex justify-center items-center">
+<svg class="w-full h-32 text-clay" viewbox="0 0 400 100">
+<path class="animate-[pulse_2s_infinite]" d="M0 50 L150 50 L160 30 L175 70 L190 10 L210 90 L225 50 L400 50" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></path>
+</svg>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION E: CTA -->
+<section class="bg-surface py-48 px-12 text-center">
+<div class="max-w-3xl mx-auto space-y-8">
+<h2 class="font-headline text-5xl font-bold text-moss tracking-tight">Veltro isn't for everyone.</h2>
+<p class="font-body text-2xl text-moss/70 leading-relaxed">
+                It's for the teams who understand that speed is a byproduct of precision.
+            </p>
+<div class="pt-8 space-y-6">
+<button class="bg-clay text-white px-12 py-5 rounded-full font-headline text-xl font-bold magnetic-hover shadow-2xl shadow-clay/40">
+                    Start Your 14-Day Trial
+                </button>
+<p class="font-label text-xs uppercase tracking-[0.2em] text-moss/50">
+                    NO CREDIT CARD REQUIRED · SETUP IN &lt; 2 MINS
+                </p>
+</div>
+</div>
+</section>
+<!-- SECTION F: FOOTER -->
+<footer class="bg-charcoal w-full pt-20 pb-10 px-12 flex flex-col md:flex-row justify-between rounded-t-[4rem]">
+<div class="space-y-8 mb-12 md:mb-0">
+<div class="text-3xl font-bold text-cream font-headline tracking-tighter">Veltro</div>
+<p class="text-cream/40 max-w-xs font-body">Building the world's most sophisticated operational operating system.</p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-white text-xl" data-icon="public">public</span>
+</a>
+<a class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-white text-xl" data-icon="share">share</span>
+</a>
+</div>
+</div>
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-12">
+<div class="space-y-4">
+<h4 class="font-headline text-cream text-sm font-bold uppercase tracking-widest">Product</h4>
+<nav class="flex flex-col gap-3">
+<a class="text-cream/50 font-body hover:text-clay transition-colors" href="#">Assets</a>
+<a class="text-cream/50 font-body hover:text-clay transition-colors" href="#">Work Orders</a>
+<a class="text-cream/50 font-body hover:text-clay transition-colors" href="#">Compliance</a>
+</nav>
+</div>
+<div class="space-y-4">
+<h4 class="font-headline text-cream text-sm font-bold uppercase tracking-widest">Company</h4>
+<nav class="flex flex-col gap-3">
+<a class="text-cream/50 font-body hover:text-clay transition-colors" href="#">About</a>
+<a class="text-cream/50 font-body hover:text-clay transition-colors" href="#">Careers</a>
+<a class="text-cream/50 font-body hover:text-clay transition-colors" href="#">Partners</a>
+</nav>
+</div>
+<div class="space-y-4">
+<h4 class="font-headline text-cream text-sm font-bold uppercase tracking-widest">Resources</h4>
+<nav class="flex flex-col gap-3">
+<a class="text-cream/50 font-body hover:text-clay transition-colors" href="#">Documentation</a>
+<a class="text-cream/50 font-body hover:text-clay transition-colors" href="#">Guides</a>
+<a class="text-cream/50 font-body hover:text-clay transition-colors" href="#">API</a>
+</nav>
+</div>
+<div class="space-y-4">
+<h4 class="font-headline text-cream text-sm font-bold uppercase tracking-widest">System</h4>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
+<span class="text-green-400 font-label text-xs uppercase tracking-widest">Operational Pulse: All Systems Go</span>
+</div>
+</div>
+</div>
+<div class="w-full mt-20 pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-cream/30 font-label text-xs">© 2024 Veltro Operations OS. All rights reserved.</p>
+<div class="flex gap-8 text-cream/30 font-label text-xs uppercase tracking-widest">
+<a class="hover:text-cream transition-colors" href="#">Privacy</a>
+<a class="hover:text-cream transition-colors" href="#">Terms</a>
+<a class="hover:text-cream transition-colors" href="#">Security</a>
+</div>
+</div>
+</footer>
+</body></html>

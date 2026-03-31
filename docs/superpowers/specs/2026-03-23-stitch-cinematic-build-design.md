@@ -6,7 +6,7 @@
 
 ## 1. Goal
 
-Create a standalone comparison site at `stitch-cinematic/` using the Stitch HTML designs as the source of truth. The site must look professional and clean on all screen sizes (desktop, tablet, phone). It sits alongside `antigravity-cinematic/` and the main Next.js site for side-by-side comparison.
+Create a standalone comparison site at `stitch-cinematic/` using the Stitch HTML designs as the source of truth. The site must look professional and clean on all screen sizes (desktop, tablet, phone).
 
 ---
 
@@ -17,7 +17,7 @@ Create a standalone comparison site at `stitch-cinematic/` using the Stitch HTML
 | Build | Vite | 5.x |
 | UI | React | 19.x |
 | Routing | React Router | 6.x (library mode) |
-| Styling | Tailwind CSS | 3.4.x (intentionally v3, not v4 — matches Stitch HTML class conventions and antigravity-cinematic) |
+| Styling | Tailwind CSS | 3.4.x (intentionally v3, not v4 — matches Stitch HTML class conventions) |
 | Animation | GSAP + ScrollTrigger | 3.12.x |
 | Smooth Scroll | Lenis | 1.x |
 | Icons | Material Symbols (Google Fonts) + Lucide React | latest |

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&amp;family=Cormorant+Garamond:ital,wght@1,400;1,600&amp;family=Outfit:wght@300;400;500&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container": "#f0eee7",
+              "surface-variant": "#e4e2dc",
+              "error": "#ba1a1a",
+              "surface-tint": "#506358",
+              "surface-container-highest": "#e4e2dc",
+              "on-surface-variant": "#424844",
+              "on-secondary": "#ffffff",
+              "secondary": "#a53c19",
+              "inverse-primary": "#b7cbbe",
+              "error-container": "#ffdad6",
+              "on-error-container": "#93000a",
+              "surface-container-high": "#eae8e1",
+              "surface-bright": "#fbf9f2",
+              "on-secondary-container": "#6e1c00",
+              "surface-dim": "#dcdad3",
+              "surface": "#fbf9f2",
+              "on-background": "#1b1c18",
+              "secondary-fixed-dim": "#ffb59f",
+              "secondary-fixed": "#ffdbd0",
+              "tertiary-container": "#3c3c3c",
+              "on-primary-fixed": "#0d1f16",
+              "primary-fixed-dim": "#b7cbbe",
+              "primary-fixed": "#d3e8d9",
+              "tertiary": "#262626",
+              "surface-container-lowest": "#ffffff",
+              "tertiary-fixed-dim": "#c8c6c5",
+              "inverse-surface": "#30312c",
+              "inverse-on-surface": "#f3f1ea",
+              "on-primary-container": "#97ab9e",
+              "on-tertiary-container": "#a8a6a6",
+              "tertiary-fixed": "#e5e2e1",
+              "on-tertiary-fixed-variant": "#474746",
+              "on-tertiary-fixed": "#1c1b1b",
+              "on-primary": "#ffffff",
+              "secondary-container": "#ff7e55",
+              "on-secondary-fixed": "#3a0a00",
+              "outline-variant": "#c3c8c2",
+              "background": "#fbf9f2",
+              "primary-container": "#2e4036",
+              "on-surface": "#1b1c18",
+              "on-secondary-fixed-variant": "#842502",
+              "primary": "#182a21",
+              "outline": "#737874",
+              "on-primary-fixed-variant": "#394b40",
+              "on-error": "#ffffff",
+              "surface-container-low": "#f6f4ec",
+              "on-tertiary": "#ffffff"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Outfit"],
+              "display": ["Cormorant Garamond"],
+              "label": ["IBM Plex Mono"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Outfit', sans-serif; }
+        .grain-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3Ex%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+        .magnetic-hover:hover { transform: scale(1.03); transition: transform 0.3s ease-out; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-secondary/30">
+<div class="grain-overlay"></div>
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between max-w-5xl mx-auto rounded-full mt-6 px-6 py-2 bg-stone-50/60 dark:bg-stone-900/60 backdrop-blur-xl shadow-[0_20px_50px_rgba(24,42,33,0.04)]">
+<div class="text-2xl font-bold tracking-tight text-emerald-950 dark:text-emerald-50">Veltro</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-stone-600 dark:text-stone-400 font-medium hover:text-emerald-800 transition-colors" href="#">Features</a>
+<a class="text-stone-600 dark:text-stone-400 font-medium hover:text-emerald-800 transition-colors" href="#">Pricing</a>
+<a class="text-stone-600 dark:text-stone-400 font-medium hover:text-emerald-800 transition-colors" href="#">Use Cases</a>
+<a class="text-stone-600 dark:text-stone-400 font-medium hover:text-emerald-800 transition-colors" href="#">Blog</a>
+</div>
+<button class="bg-secondary text-on-secondary px-6 py-2 rounded-full font-bold magnetic-hover text-sm">Start Trial</button>
+</nav>
+<main>
+<!-- Hero Section -->
+<header class="relative h-[512px] w-full overflow-hidden flex items-end pb-16">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover" data-alt="Warm professional team collaborating in a modern office space" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhjOKRx-eiOzH0Az4pMfHvzHIc_uSoy4B0UXvKe-egEFTfTGUwjOn20YPrwCLRng1U5B5poivzYT7bmQ7eI_EDK0MMoVs9ctUBdIrBWBPJChxrXljNewQCBPHQcB5_k5Mwf1Ipw4krkplhLwZEzKYuJdE4SFnJFdAhCRHydapHKFLaWDz9tXFQh765jQZ4rp_MdfWeqI6XgqRHGYpN9feqq9T6I5Oyf8ZMwaKElgWDJI8Tdrw9_Y0io2y2fCDdYlcQtc7vPZ4-7qb4"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/40 to-transparent"></div>
+</div>
+<div class="relative z-10 container mx-auto px-6 max-w-6xl">
+<div class="max-w-3xl">
+<span class="font-label text-primary-fixed uppercase tracking-widest text-xs mb-4 block">Careers</span>
+<h1 class="font-display italic text-surface-bright text-5xl md:text-7xl leading-tight">Join the team</h1>
+<p class="font-body text-surface-container-highest text-xl mt-4 opacity-90 max-w-lg">Build the tools that keep everything running.</p>
+</div>
+</div>
+</header>
+<!-- Why Veltro Section -->
+<section class="py-24 bg-surface-container">
+<div class="container mx-auto px-6 max-w-6xl">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+<h2 class="font-headline font-bold text-4xl text-primary max-w-md leading-tight">Architecture of a Modern Workplace</h2>
+<p class="font-display italic text-2xl text-on-surface-variant max-w-sm">"We're not building a startup; we're crafting an operational legacy."</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Value Card 1 -->
+<div class="bg-surface-container-lowest p-10 rounded-xl shadow-[0_20px_50px_rgba(24,42,33,0.02)] flex flex-col gap-6 magnetic-hover">
+<div class="font-label text-secondary text-sm">01. IMPACT</div>
+<h3 class="font-headline font-bold text-2xl">Meaningful work</h3>
+<p class="font-body text-on-surface-variant leading-relaxed">Solve complex logistical challenges that impact global infrastructure. Your code moves physical atoms.</p>
+</div>
+<!-- Value Card 2 -->
+<div class="bg-surface-container-lowest p-10 rounded-xl shadow-[0_20px_50px_rgba(24,42,33,0.02)] flex flex-col gap-6 magnetic-hover">
+<div class="font-label text-secondary text-sm">02. AUTONOMY</div>
+<h3 class="font-headline font-bold text-2xl">Small team, big ownership</h3>
+<p class="font-body text-on-surface-variant leading-relaxed">We hire experts and get out of their way. Own entire features from discovery to deployment.</p>
+</div>
+<!-- Value Card 3 -->
+<div class="bg-surface-container-lowest p-10 rounded-xl shadow-[0_20px_50px_rgba(24,42,33,0.02)] flex flex-col gap-6 magnetic-hover">
+<div class="font-label text-secondary text-sm">03. FREEDOM</div>
+<h3 class="font-headline font-bold text-2xl">Remote-first, async-native</h3>
+<p class="font-body text-on-surface-variant leading-relaxed">Work from anywhere in the world. We prioritize documentation and deep work over endless meetings.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Open Positions Section -->
+<section class="py-24 bg-surface-container-lowest">
+<div class="container mx-auto px-6 max-w-4xl">
+<div class="text-center mb-20">
+<h2 class="font-headline font-bold text-4xl mb-4">Open Positions</h2>
+<div class="w-12 h-1 bg-secondary mx-auto rounded-full"></div>
+</div>
+<div class="space-y-4">
+<!-- Job Card 1 -->
+<div class="group flex flex-col md:flex-row items-start md:items-center justify-between p-8 rounded-lg bg-surface-container-low hover:bg-surface-container-high transition-all duration-300">
+<div class="flex flex-col gap-2">
+<h4 class="font-headline font-bold text-xl text-primary">Senior Frontend Engineer</h4>
+<div class="flex items-center gap-4">
+<span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full font-label text-[10px] uppercase tracking-wider font-bold">Engineering</span>
+<span class="text-on-surface-variant font-body text-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">public</span> Remote
+                                </span>
+</div>
+</div>
+<a class="mt-6 md:mt-0 font-label text-secondary text-sm font-bold flex items-center gap-2 group-hover:translate-x-1 transition-transform" href="#">
+                            View role <span class="material-symbols-outlined text-lg">arrow_right_alt</span>
+</a>
+</div>
+<!-- Job Card 2 -->
+<div class="group flex flex-col md:flex-row items-start md:items-center justify-between p-8 rounded-lg bg-surface-container-low hover:bg-surface-container-high transition-all duration-300">
+<div class="flex flex-col gap-2">
+<h4 class="font-headline font-bold text-xl text-primary">Product Designer</h4>
+<div class="flex items-center gap-4">
+<span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full font-label text-[10px] uppercase tracking-wider font-bold">Design</span>
+<span class="text-on-surface-variant font-body text-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">public</span> Remote
+                                </span>
+</div>
+</div>
+<a class="mt-6 md:mt-0 font-label text-secondary text-sm font-bold flex items-center gap-2 group-hover:translate-x-1 transition-transform" href="#">
+                            View role <span class="material-symbols-outlined text-lg">arrow_right_alt</span>
+</a>
+</div>
+<!-- Job Card 3 -->
+<div class="group flex flex-col md:flex-row items-start md:items-center justify-between p-8 rounded-lg bg-surface-container-low hover:bg-surface-container-high transition-all duration-300">
+<div class="flex flex-col gap-2">
+<h4 class="font-headline font-bold text-xl text-primary">Backend Infrastructure Architect</h4>
+<div class="flex items-center gap-4">
+<span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full font-label text-[10px] uppercase tracking-wider font-bold">Engineering</span>
+<span class="text-on-surface-variant font-body text-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">public</span> Remote
+                                </span>
+</div>
+</div>
+<a class="mt-6 md:mt-0 font-label text-secondary text-sm font-bold flex items-center gap-2 group-hover:translate-x-1 transition-transform" href="#">
+                            View role <span class="material-symbols-outlined text-lg">arrow_right_alt</span>
+</a>
+</div>
+<!-- Job Card 4 -->
+<div class="group flex flex-col md:flex-row items-start md:items-center justify-between p-8 rounded-lg bg-surface-container-low hover:bg-surface-container-high transition-all duration-300">
+<div class="flex flex-col gap-2">
+<h4 class="font-headline font-bold text-xl text-primary">Customer Operations Lead</h4>
+<div class="flex items-center gap-4">
+<span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full font-label text-[10px] uppercase tracking-wider font-bold">Success</span>
+<span class="text-on-surface-variant font-body text-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">public</span> Remote
+                                </span>
+</div>
+</div>
+<a class="mt-6 md:mt-0 font-label text-secondary text-sm font-bold flex items-center gap-2 group-hover:translate-x-1 transition-transform" href="#">
+                            View role <span class="material-symbols-outlined text-lg">arrow_right_alt</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-32 bg-tertiary">
+<div class="container mx-auto px-6 max-w-4xl text-center">
+<div class="mb-12">
+<span class="font-display italic text-3xl text-surface-container-high block mb-6">"Our next great architect isn't on a list yet."</span>
+<h2 class="font-headline font-bold text-4xl text-surface-bright mb-4">Don't see your role? We're always looking for great people.</h2>
+</div>
+<button class="bg-secondary text-on-secondary px-10 py-4 rounded-full font-bold text-lg magnetic-hover shadow-xl shadow-secondary/20">
+                    Say Hello
+                </button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-neutral-900 dark:bg-black w-full px-12 py-20 flex flex-col md:flex-row justify-between items-start gap-12 rounded-t-[3rem] mt-20">
+<div class="flex flex-col gap-6">
+<div class="text-xl font-bold text-white">Veltro</div>
+<p class="font-label text-stone-400 text-xs tracking-widest leading-relaxed">© 2024 VELTRO OS.<br/>SYSTEM OPERATIONAL.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-x-16 gap-y-4">
+<a class="text-stone-400 hover:text-white transition-colors font-body text-sm hover:translate-x-1" href="#">Features</a>
+<a class="text-stone-400 hover:text-white transition-colors font-body text-sm hover:translate-x-1" href="#">Pricing</a>
+<a class="text-stone-400 hover:text-white transition-colors font-body text-sm hover:translate-x-1" href="#">Use Cases</a>
+<a class="text-stone-400 hover:text-white transition-colors font-body text-sm hover:translate-x-1" href="#">Blog</a>
+<a class="text-stone-400 hover:text-white transition-colors font-body text-sm hover:translate-x-1" href="#">Privacy</a>
+<a class="text-stone-400 hover:text-white transition-colors font-body text-sm hover:translate-x-1" href="#">Terms</a>
+</div>
+<div class="flex flex-col items-end gap-4">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+<span class="font-label text-xs text-stone-500 uppercase">Status: Optimal</span>
+</div>
+</div>
+</footer>
+</body></html>
