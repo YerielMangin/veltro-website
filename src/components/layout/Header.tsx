@@ -112,6 +112,49 @@ export function Header() {
     };
   }, [menuVisible]);
 
+  // Focus trap + Escape key for mobile menu
+  useEffect(() => {
+    if (!menuVisible || !menuRef.current) return;
+
+    const menuEl = menuRef.current;
+
+    // Focus first link after animation settles
+    const focusTimer = setTimeout(() => {
+      const firstLink = menuEl.querySelector<HTMLElement>("a, button");
+      firstLink?.focus();
+    }, reducedMotion ? 0 : 300);
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        closeMenu();
+        return;
+      }
+
+      if (e.key !== "Tab") return;
+
+      const focusable = menuEl.querySelectorAll<HTMLElement>("a, button");
+      if (focusable.length === 0) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      clearTimeout(focusTimer);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [menuVisible, reducedMotion]);
+
   return (
     <>
       <div ref={sentinelRef} className="pointer-events-none absolute left-0 top-0 h-1 w-full" />
@@ -204,6 +247,9 @@ export function Header() {
         <div
           ref={menuRef}
           id="mobile-menu"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Navigation menu"
           className="fixed left-4 right-4 top-16 z-40 flex flex-col gap-4 rounded-[2rem] border border-cream-300 bg-cream/95 p-6 shadow-xl backdrop-blur-xl md:hidden"
         >
           {mainNav.map((link) => (
