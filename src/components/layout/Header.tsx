@@ -162,7 +162,7 @@ export function Header() {
       <nav
         aria-label="Main navigation"
         className={cn(
-          "fixed left-1/2 top-4 z-50 flex -translate-x-1/2 items-center gap-4 rounded-full px-4 py-3 transition-all duration-500 ease-out md:gap-8 md:px-6",
+          "fixed left-1/2 top-4 z-50 flex -translate-x-1/2 items-center gap-4 rounded-full px-4 py-3 pt-[max(0.75rem,env(safe-area-inset-top))] transition-all duration-500 ease-out md:gap-8 md:px-6",
           scrolled
             ? "border border-cream-300 bg-cream/80 text-charcoal shadow-lg backdrop-blur-xl"
             : "bg-transparent text-cream"

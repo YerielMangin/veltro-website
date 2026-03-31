@@ -7,7 +7,7 @@ const year = new Date().getFullYear();
 
 export function Footer() {
   return (
-    <footer className="mt-12 rounded-t-[4rem] bg-charcoal px-6 pb-8 pt-20 text-cream/70 md:px-12 lg:px-24">
+    <footer className="mt-12 rounded-t-[4rem] bg-charcoal px-6 pb-[max(2rem,env(safe-area-inset-bottom))] pt-20 text-cream/70 md:px-12 lg:px-24">
       <div className="mx-auto max-w-6xl">
         {/* Top grid */}
         <div className="grid grid-cols-1 gap-12 md:grid-cols-6 md:gap-8">
