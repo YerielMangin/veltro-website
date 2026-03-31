@@ -4,37 +4,42 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ChevronDown } from "lucide-react";
 import { MagneticButton } from "@/components/ui/MagneticButton";
+import { useReducedMotion } from "@/lib/useReducedMotion";
 
 export function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
+  const reducedMotion = useReducedMotion();
 
   useEffect(() => {
     if (!sectionRef.current) return;
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ delay: 0.3 });
+    if (reducedMotion) return; // content is visible by default
 
-      tl.fromTo(
-        ".hero-line-1",
-        { y: 40, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }
-      )
-        .fromTo(
+    const ctx = gsap.context(() => {
+      // Set initial hidden state via GSAP (not CSS) — progressive enhancement
+      gsap.set(".hero-line-1, .hero-line-2, .hero-cta, .hero-sub", { opacity: 0 });
+      gsap.set(".hero-line-1", { y: 40 });
+      gsap.set(".hero-line-2", { y: 60 });
+      gsap.set(".hero-cta", { y: 30 });
+
+      const tl = gsap.timeline({ delay: 0.15 });
+
+      tl.to(".hero-line-1", {
+        y: 0, opacity: 1, duration: 0.6, ease: "power3.out",
+      })
+        .to(
           ".hero-line-2",
-          { y: 60, opacity: 0 },
-          { y: 0, opacity: 1, duration: 1.0, ease: "power3.out" },
-          "-=0.65"
-        )
-        .fromTo(
-          ".hero-cta",
-          { y: 30, opacity: 0 },
           { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" },
-          "-=0.5"
+          "-=0.45"
         )
-        .fromTo(
-          ".hero-sub",
-          { opacity: 0 },
-          { opacity: 1, duration: 0.6 },
+        .to(
+          ".hero-cta",
+          { y: 0, opacity: 1, duration: 0.4, ease: "power3.out" },
           "-=0.3"
+        )
+        .to(
+          ".hero-sub",
+          { opacity: 1, duration: 0.4 },
+          "-=0.2"
         );
 
       gsap.to(".hero-scroll", {
@@ -42,12 +47,12 @@ export function HeroSection() {
         duration: 1.2,
         ease: "power1.inOut",
         yoyo: true,
-        repeat: -1,
+        repeat: 3,
       });
     }, sectionRef.current);
 
     return () => ctx.revert();
-  }, []);
+  }, [reducedMotion]);
 
   return (
     <section
@@ -60,18 +65,20 @@ export function HeroSection() {
 
       {/* Content */}
       <div className="relative z-10 max-w-4xl p-8 md:p-16 lg:p-24">
-        <p className="hero-line-1 font-heading text-3xl font-bold tracking-tight text-cream opacity-0 md:text-5xl lg:text-6xl">
-          Your operation has a
-        </p>
-        <p className="hero-line-2 mt-2 font-display text-6xl italic leading-[0.9] tracking-tight text-cream opacity-0 md:text-8xl lg:text-[10rem]">
-          Rhythm.
-        </p>
-        <div className="hero-cta mt-10 opacity-0">
+        <h1>
+          <span className="hero-line-1 block font-heading text-3xl font-bold tracking-tight text-cream md:text-5xl lg:text-6xl">
+            Your operation has a
+          </span>
+          <span className="hero-line-2 mt-2 block font-display text-6xl italic leading-[0.9] tracking-tight text-cream md:text-8xl lg:text-[10rem]">
+            Rhythm.
+          </span>
+        </h1>
+        <div className="hero-cta mt-10">
           <MagneticButton href="/demo" variant="clay" size="lg">
             Start Your 14-Day Trial
           </MagneticButton>
         </div>
-        <p className="hero-sub mt-4 font-mono text-sm text-cream/50 opacity-0">
+        <p className="hero-sub mt-4 font-mono text-sm text-cream/70">
           No credit card required
         </p>
       </div>
