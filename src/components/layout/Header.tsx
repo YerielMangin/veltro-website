@@ -39,6 +39,7 @@ export function Header() {
       <div ref={sentinelRef} className="pointer-events-none absolute left-0 top-0 h-1 w-full" />
 
       <nav
+        aria-label="Main navigation"
         className={cn(
           "fixed left-1/2 top-4 z-50 flex -translate-x-1/2 items-center gap-4 rounded-full px-4 py-3 transition-all duration-500 ease-out md:gap-8 md:px-6",
           scrolled
@@ -88,9 +89,11 @@ export function Header() {
 
         {/* Mobile hamburger */}
         <button
-          className="p-1 md:hidden"
+          className="flex items-center justify-center min-h-[44px] min-w-[44px] md:hidden"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
+          aria-expanded={mobileOpen}
+          aria-controls="mobile-menu"
         >
           {mobileOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
@@ -98,13 +101,13 @@ export function Header() {
 
       {/* Mobile dropdown */}
       {mobileOpen && (
-        <div className="fixed left-4 right-4 top-16 z-40 flex flex-col gap-4 rounded-[2rem] border border-cream-300 bg-cream/95 p-6 shadow-xl backdrop-blur-xl md:hidden">
+        <div id="mobile-menu" className="fixed left-4 right-4 top-16 z-40 flex flex-col gap-4 rounded-[2rem] border border-cream-300 bg-cream/95 p-6 shadow-xl backdrop-blur-xl md:hidden">
           {mainNav.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={() => setMobileOpen(false)}
-              className="border-b border-cream-300 py-2 font-body text-base font-medium text-charcoal last:border-0"
+              className="border-b border-cream-300 py-3 font-body text-base font-medium text-charcoal last:border-0"
             >
               {link.title}
             </Link>
@@ -112,7 +115,7 @@ export function Header() {
           <Link
             href="https://app.getveltro.com/#/login"
             onClick={() => setMobileOpen(false)}
-            className="border-b border-cream-300 py-2 font-body text-base font-medium text-charcoal"
+            className="border-b border-cream-300 py-3 font-body text-base font-medium text-charcoal"
           >
             Login
           </Link>
