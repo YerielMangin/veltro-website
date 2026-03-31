@@ -4,16 +4,94 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
+import gsap from "gsap";
 import { VeltroLogo } from "@/components/brand/VeltroLogo";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { mainNav } from "@/config/navigation";
 import { cn } from "@/lib/utils";
+import { useReducedMotion } from "@/lib/useReducedMotion";
 
 export function Header() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const sentinelRef = useRef<HTMLDivElement>(null);
+  const reducedMotion = useReducedMotion();
+  const menuRef = useRef<HTMLDivElement>(null);
+  const backdropRef = useRef<HTMLDivElement>(null);
+  const hamburgerRef = useRef<HTMLButtonElement>(null);
+  const isAnimatingRef = useRef(false);
+  const [menuVisible, setMenuVisible] = useState(false);
+
+  const openMenu = () => {
+    if (isAnimatingRef.current) return;
+    setMobileOpen(true);
+    setMenuVisible(true);
+
+    if (reducedMotion) return;
+
+    isAnimatingRef.current = true;
+    requestAnimationFrame(() => {
+      const tl = gsap.timeline({
+        onComplete: () => { isAnimatingRef.current = false; },
+      });
+
+      // Backdrop fade in
+      if (backdropRef.current) {
+        gsap.set(backdropRef.current, { opacity: 0 });
+        tl.to(backdropRef.current, { opacity: 1, duration: 0.25, ease: "power3.out" }, 0);
+      }
+
+      // Panel scale from top-right
+      if (menuRef.current) {
+        gsap.set(menuRef.current, { scale: 0.95, opacity: 0, transformOrigin: "top right" });
+        tl.to(menuRef.current, { scale: 1, opacity: 1, duration: 0.25, ease: "power3.out" }, 0);
+      }
+
+      // Stagger menu items
+      if (menuRef.current) {
+        const items = menuRef.current.querySelectorAll(".mobile-menu-item");
+        gsap.set(items, { opacity: 0, y: 8 });
+        tl.to(items, { opacity: 1, y: 0, stagger: 0.04, duration: 0.25, ease: "power3.out" }, 0.05);
+      }
+    });
+  };
+
+  const closeMenu = () => {
+    if (isAnimatingRef.current) return;
+
+    if (reducedMotion) {
+      setMobileOpen(false);
+      setMenuVisible(false);
+      return;
+    }
+
+    isAnimatingRef.current = true;
+    const tl = gsap.timeline({
+      onComplete: () => {
+        setMobileOpen(false);
+        setMenuVisible(false);
+        isAnimatingRef.current = false;
+        hamburgerRef.current?.focus();
+      },
+    });
+
+    // Fade out items fast
+    if (menuRef.current) {
+      const items = menuRef.current.querySelectorAll(".mobile-menu-item");
+      tl.to(items, { opacity: 0, duration: 0.1 }, 0);
+    }
+
+    // Scale down panel
+    if (menuRef.current) {
+      tl.to(menuRef.current, { scale: 0.95, opacity: 0, duration: 0.2, ease: "power2.inOut" }, 0.05);
+    }
+
+    // Fade out backdrop
+    if (backdropRef.current) {
+      tl.to(backdropRef.current, { opacity: 0, duration: 0.2, ease: "power2.inOut" }, 0.05);
+    }
+  };
 
   useEffect(() => {
     const sentinel = sentinelRef.current;
@@ -28,11 +106,11 @@ export function Header() {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    document.body.style.overflow = menuVisible ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
-  }, [mobileOpen]);
+  }, [menuVisible]);
 
   return (
     <>
@@ -100,8 +178,9 @@ export function Header() {
 
         {/* Mobile hamburger */}
         <button
+          ref={hamburgerRef}
           className="flex items-center justify-center min-h-[44px] min-w-[44px] md:hidden"
-          onClick={() => setMobileOpen(!mobileOpen)}
+          onClick={() => (mobileOpen ? closeMenu() : openMenu())}
           aria-label="Toggle menu"
           aria-expanded={mobileOpen}
           aria-controls="mobile-menu"
@@ -110,23 +189,37 @@ export function Header() {
         </button>
       </nav>
 
-      {/* Mobile dropdown */}
-      {mobileOpen && (
-        <div id="mobile-menu" className="fixed left-4 right-4 top-16 z-40 flex flex-col gap-4 rounded-[2rem] border border-cream-300 bg-cream/95 p-6 shadow-xl backdrop-blur-xl md:hidden">
+      {/* Mobile backdrop */}
+      {menuVisible && (
+        <div
+          ref={backdropRef}
+          className="fixed inset-0 z-40 bg-charcoal/50 backdrop-blur-sm md:hidden"
+          onClick={closeMenu}
+          aria-hidden="true"
+        />
+      )}
+
+      {/* Mobile menu */}
+      {menuVisible && (
+        <div
+          ref={menuRef}
+          id="mobile-menu"
+          className="fixed left-4 right-4 top-16 z-40 flex flex-col gap-4 rounded-[2rem] border border-cream-300 bg-cream/95 p-6 shadow-xl backdrop-blur-xl md:hidden"
+        >
           {mainNav.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              onClick={() => setMobileOpen(false)}
-              className="border-b border-cream-300 py-3 font-body text-base font-medium text-charcoal last:border-0"
+              onClick={closeMenu}
+              className="mobile-menu-item border-b border-cream-300 py-3 font-body text-base font-medium text-charcoal last:border-0"
             >
               {link.title}
             </Link>
           ))}
           <Link
             href="https://app.getveltro.com/#/login"
-            onClick={() => setMobileOpen(false)}
-            className="border-b border-cream-300 py-3 font-body text-base font-medium text-charcoal"
+            onClick={closeMenu}
+            className="mobile-menu-item border-b border-cream-300 py-3 font-body text-base font-medium text-charcoal"
           >
             Login
           </Link>
@@ -134,7 +227,7 @@ export function Header() {
             href="/demo"
             variant="clay"
             size="md"
-            className="mt-2 w-full"
+            className="mobile-menu-item mt-2 w-full"
           >
             Start Trial
           </MagneticButton>
