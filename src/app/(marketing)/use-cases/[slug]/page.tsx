@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getContentBySlug, getAllContent, type ContentMeta } from "@/lib/content";
+import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
 import { SecondaryHero } from "@/components/marketing/SecondaryHero";
 import { PhilosophySection } from "@/components/marketing/PhilosophySection";
 import { CTASection } from "@/components/marketing/CTASection";
@@ -51,6 +52,13 @@ export default async function UseCasePage({ params }: Props) {
       />
 
       <section className="mx-auto max-w-4xl px-6 py-24 sm:py-32">
+        <Breadcrumbs
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Solutions" },
+            { label: useCase.meta.industry },
+          ]}
+        />
         <ScrollReveal>
           <div className="prose prose-lg max-w-none font-body prose-headings:font-heading prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-charcoal prose-p:leading-relaxed prose-p:text-charcoal/80 prose-strong:text-charcoal sm:prose-xl">
             <div dangerouslySetInnerHTML={{ __html: useCase.content }} />

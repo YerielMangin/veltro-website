@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
 import { getContentBySlug, getAllContent, type ContentMeta } from "@/lib/content";
+import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
 import { absoluteUrl } from "@/lib/utils";
 import { SecondaryHero } from "@/components/marketing/SecondaryHero";
 import { CTASection } from "@/components/marketing/CTASection";
@@ -56,13 +55,13 @@ export default async function BlogPostPage({ params }: Props) {
 
       <article className="mx-auto max-w-3xl px-6 pb-24">
         <ScrollReveal>
-          <Link
-            href="/blog"
-            className="mb-12 inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-charcoal/40 transition-colors duration-300 hover:text-charcoal"
-          >
-            <ArrowLeft className="h-3 w-3" />
-            Back to journal
-          </Link>
+          <Breadcrumbs
+            items={[
+              { label: "Home", href: "/" },
+              { label: "Blog", href: "/blog" },
+              { label: post.meta.title },
+            ]}
+          />
 
           <header className="mb-16 border-b border-charcoal/5 pb-10">
             <div className="flex items-center gap-6">
