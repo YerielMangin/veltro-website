@@ -37,7 +37,7 @@ export function CTASection() {
       className="bg-white px-6 py-32 md:px-12 md:py-48 lg:px-24"
     >
       <div className="cta-content mx-auto max-w-3xl text-center">
-        <p className="font-display text-5xl italic leading-tight text-charcoal md:text-7xl">
+        <p className="font-display text-3xl italic leading-tight text-charcoal md:text-5xl lg:text-7xl">
           Veltro isn't for everyone. It's for the teams who understand that{" "}
           <span className="text-clay">speed is a byproduct of precision.</span>
         </p>

@@ -69,7 +69,10 @@ export function HeroSection() {
           <span className="hero-line-1 block font-heading text-3xl font-bold tracking-tight text-cream md:text-5xl lg:text-6xl">
             Your operation has a
           </span>
-          <span className="hero-line-2 mt-2 block font-display text-6xl italic leading-[0.9] tracking-tight text-cream md:text-8xl lg:text-[10rem]">
+          <span
+            className="hero-line-2 mt-2 block font-display italic leading-[0.9] tracking-tight text-cream"
+            style={{ fontSize: "clamp(3.5rem, 12vw, 10rem)" }}
+          >
             Rhythm.
           </span>
         </h1>
