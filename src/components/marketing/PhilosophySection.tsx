@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useReducedMotion } from "@/lib/useReducedMotion";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -19,16 +20,17 @@ export function PhilosophySection({
 }) {
   const sectionRef = useRef<HTMLElement>(null);
   const line1Words = line1.split(" ");
+  const reducedMotion = useReducedMotion();
 
   useEffect(() => {
-    if (!sectionRef.current) return;
+    if (!sectionRef.current || reducedMotion) return;
     const ctx = gsap.context(() => {
       gsap.fromTo(
         ".phil-word",
-        { opacity: 0.1 },
+        { opacity: 0.3 },
         {
           opacity: 1,
-          duration: 0.3,
+          duration: 0.25,
           stagger: 0.05,
           ease: "power2.out",
           scrollTrigger: {
@@ -38,25 +40,22 @@ export function PhilosophySection({
         }
       );
 
-      gsap.fromTo(
-        ".phil-line-2 > *",
-        { y: 40, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          stagger: 0.2,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: ".phil-line-2",
-            start: "top 75%",
-          },
-        }
-      );
+      gsap.set(".phil-line-2 > *", { y: 40, opacity: 0 });
+      gsap.to(".phil-line-2 > *", {
+        y: 0,
+        opacity: 1,
+        duration: 0.5,
+        stagger: 0.2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".phil-line-2",
+          start: "top 75%",
+        },
+      });
     }, sectionRef.current);
 
     return () => ctx.revert();
-  }, [line1, line2Part1, line2Part2, line2Accent]);
+  }, [line1, line2Part1, line2Part2, line2Accent, reducedMotion]);
 
   return (
     <section
