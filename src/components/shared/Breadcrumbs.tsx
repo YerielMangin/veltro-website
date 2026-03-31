@@ -51,6 +51,7 @@ export function Breadcrumbs({ items }: BreadcrumbsProps) {
                   className={`font-mono text-[10px] uppercase tracking-widest ${
                     isLast ? "max-w-[200px] truncate text-charcoal/60" : "text-charcoal/40"
                   }`}
+                  {...(isLast ? { "aria-current": "page" as const } : {})}
                 >
                   {item.label}
                 </span>
