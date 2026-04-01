@@ -44,7 +44,7 @@ export function DiagnosticShuffler() {
   return (
     <div className="flex h-[24rem] flex-col overflow-hidden rounded-[2rem] border border-cream-300 bg-cream-50 p-8 shadow-sm md:h-[28rem]">
       <span className="inline-flex w-fit items-center gap-2 rounded-full bg-moss/10 px-3 py-1 font-mono text-xs text-moss">
-        Diagnostic
+        Smart Diagnostics
       </span>
       <h3 className="mt-4 font-heading text-xl font-bold">Keep work moving</h3>
       <p className="mt-1 font-body text-sm text-charcoal/60">

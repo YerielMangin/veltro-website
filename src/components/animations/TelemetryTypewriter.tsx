@@ -63,7 +63,7 @@ export function TelemetryTypewriter() {
     <div className="flex h-[24rem] flex-col overflow-hidden rounded-[2rem] border border-cream-300 bg-cream-50 p-8 shadow-sm md:h-[28rem]">
       <div className="flex items-center gap-2">
         <span className="h-2 w-2 animate-pulse-slow rounded-full bg-green-500" />
-        <span className="font-mono text-xs text-charcoal/50">Live Feed</span>
+        <span className="font-mono text-xs text-charcoal/50">Real-Time Monitoring</span>
       </div>
       <h3 className="mt-4 font-heading text-xl font-bold">
         One shared place for your team
