@@ -38,12 +38,11 @@ export function CTASection() {
     >
       <div className="cta-content mx-auto max-w-3xl text-center">
         <p className="font-display text-3xl italic leading-tight text-charcoal md:text-5xl lg:text-7xl">
-          Veltro isn't for everyone. It's for the teams who understand that{" "}
-          <span className="text-clay">speed is a byproduct of precision.</span>
+          Your team deserves more than reactive chaos. Veltro gives you the{" "}
+          <span className="text-clay">clarity to move with precision.</span>
         </p>
         <p className="mx-auto mt-6 max-w-lg font-body text-lg text-charcoal/60">
-          Join the operations who value flow over friction. Find your rhythm
-          today.
+          Less firefighting. More flow. Find your rhythm today.
         </p>
         <div className="mt-10">
           <MagneticButton href="/demo" variant="clay" size="lg">
