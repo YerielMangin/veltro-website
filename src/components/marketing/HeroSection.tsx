@@ -16,7 +16,7 @@ export function HeroSection() {
 
     const ctx = gsap.context(() => {
       // Set initial hidden state via GSAP (not CSS) — progressive enhancement
-      gsap.set(".hero-line-1, .hero-line-2, .hero-cta, .hero-sub", { opacity: 0 });
+      gsap.set(".hero-line-1, .hero-line-2, .hero-subtitle, .hero-cta, .hero-sub", { opacity: 0 });
       gsap.set(".hero-line-1", { y: 40 });
       gsap.set(".hero-line-2", { y: 60 });
       gsap.set(".hero-cta", { y: 30 });
@@ -30,6 +30,11 @@ export function HeroSection() {
           ".hero-line-2",
           { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" },
           "-=0.45"
+        )
+        .to(
+          ".hero-subtitle",
+          { opacity: 1, duration: 0.4, ease: "power3.out" },
+          "-=0.3"
         )
         .to(
           ".hero-cta",
@@ -76,6 +81,9 @@ export function HeroSection() {
             Rhythm.
           </span>
         </h1>
+        <p className="hero-subtitle mt-6 max-w-xl font-heading text-lg text-cream/70 md:text-xl">
+          The operations platform that brings clarity to every task, asset, and team.
+        </p>
         <div className="hero-cta mt-10">
           <MagneticButton href="/demo" variant="clay" size="lg">
             Start Your 14-Day Trial
