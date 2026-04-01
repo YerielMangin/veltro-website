@@ -36,3 +36,7 @@ next-env.d.ts
 
 # Local Netlify folder
 .netlify
+
+# Tooling caches
+.playwright-mcp/
+.superpowers/
