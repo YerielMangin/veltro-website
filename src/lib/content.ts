@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import readingTime from "reading-time";
+import { marked } from "marked";
 
 const contentDir = path.join(process.cwd(), "src/content");
 
@@ -28,9 +29,11 @@ export function getContentBySlug<T extends ContentMeta>(
   const { data, content } = matter(raw);
   const rt = readingTime(content);
 
+  const htmlContent = marked.parse(content) as string;
+
   return {
     meta: { ...data, slug, readingTime: rt.text } as T,
-    content,
+    content: htmlContent,
   };
 }
 

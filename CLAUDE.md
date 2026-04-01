@@ -109,6 +109,54 @@ Content here...
 
 ---
 
+## Cinematic Design System (Stitch Reference)
+
+The stitch-cinematic prototype (`stitch-cinematic/`) is the reference implementation for the site's cinematic aesthetic. The original builder prompt is saved at `docs/GEMINI.md`.
+
+### Color Palette
+
+| Token | Hex | Usage |
+|-------|-----|-------|
+| Moss | `#2E4036` | Primary dark green — backgrounds, text |
+| Clay | `#CC5833` | Accent terracotta — CTAs, highlights, labels |
+| Cream | `#F2F0E9` | Light background — cards, sections |
+| Charcoal | `#1A1A1A` | Deep dark — hero, footer, dark sections |
+
+### Typography
+
+| Role | Font | Usage |
+|------|------|-------|
+| Heading | Plus Jakarta Sans | Bold sans — section titles, nav, buttons |
+| Display | Cormorant Garamond (Italic) | Dramatic serif — hero headlines, manifesto |
+| Data | IBM Plex Mono | Monospace — labels, status, telemetry |
+
+### Visual Texture
+- Global noise overlay via inline SVG `<feTurbulence>` filter at **0.05 opacity**
+- Rounded corners: `rounded-[2rem]` to `rounded-[3rem]` on all containers — no sharp corners
+
+### Animation Conventions (GSAP)
+- Use `gsap.context()` in `useEffect`, return `ctx.revert()` in cleanup
+- Default easing: `power3.out` (entrances), `power2.inOut` (morphs)
+- Stagger: `0.08` for text, `0.15` for cards/containers
+- Micro-interactions: magnetic buttons `scale(1.03)` on hover, link lift `translateY(-1px)`
+- Scroll blur/fade: only apply when the **next section overlaps** — never on scroll entry
+
+### Component Architecture
+- **Navbar:** floating pill, fixed centered, morphs transparent → blurred on scroll
+- **Hero:** 100dvh, full-bleed image with gradient overlay, content bottom-left, staggered GSAP entrance
+- **Features:** 3 interactive micro-UI cards (DiagnosticShuffler, TelemetryTypewriter, CursorScheduler)
+- **Philosophy:** dark bg with parallax texture, word-by-word ScrollTrigger reveal
+- **Protocol:** sticky-stacking full-screen cards with blur/scale/opacity on next-card overlap
+- **Pricing:** 3-tier grid, middle card highlighted
+- **Footer:** dark bg, `rounded-t-[4rem]`, system status indicator with pulsing dot
+
+### Prototype Workflow
+- Use `docs/GEMINI.md` prompt with aesthetic presets to generate new cinematic prototypes
+- Deploy showcases to Netlify per `docs/NETLIFY_DEPLOY.md` (always prod, each prototype = separate site)
+- Stitch-cinematic is the current reference implementation
+
+---
+
 ## Do Not
 
 - Do not use a headless CMS — all content is file-based MDX
@@ -116,6 +164,8 @@ Content here...
 - Do not use the Veltro app's Supabase project — website has its own
 - Do not add `"use client"` unless the component needs client interactivity
 - Do not import from the Veltro app monorepo — this is a standalone project
+- Do not use sharp corners — maintain `rounded-[2rem]+` radius system on cinematic pages
+- Do not apply blur/opacity effects on scroll entry — only on scroll exit (next section overlap)
 
 ---
 

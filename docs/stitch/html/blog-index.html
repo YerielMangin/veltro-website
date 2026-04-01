@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Veltro | Insights &amp; Perspectives</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&amp;family=Cormorant+Garamond:ital,wght@1,400;1,600&amp;family=Outfit:wght@300;400;500&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Inter:wght@400;500&amp;family=Space+Grotesk:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container": "#f0eee7",
+              "surface-variant": "#e4e2dc",
+              "error": "#ba1a1a",
+              "surface-tint": "#506358",
+              "surface-container-highest": "#e4e2dc",
+              "on-surface-variant": "#424844",
+              "on-secondary": "#ffffff",
+              "secondary": "#a53c19",
+              "inverse-primary": "#b7cbbe",
+              "error-container": "#ffdad6",
+              "on-error-container": "#93000a",
+              "surface-container-high": "#eae8e1",
+              "surface-bright": "#fbf9f2",
+              "on-secondary-container": "#6e1c00",
+              "surface-dim": "#dcdad3",
+              "surface": "#fbf9f2",
+              "on-background": "#1b1c18",
+              "secondary-fixed-dim": "#ffb59f",
+              "secondary-fixed": "#ffdbd0",
+              "tertiary-container": "#3c3c3c",
+              "on-primary-fixed": "#0d1f16",
+              "primary-fixed-dim": "#b7cbbe",
+              "primary-fixed": "#d3e8d9",
+              "tertiary": "#262626",
+              "surface-container-lowest": "#ffffff",
+              "tertiary-fixed-dim": "#c8c6c5",
+              "inverse-surface": "#30312c",
+              "inverse-on-surface": "#f3f1ea",
+              "on-primary-container": "#97ab9e",
+              "on-tertiary-container": "#a8a6a6",
+              "tertiary-fixed": "#e5e2e1",
+              "on-tertiary-fixed-variant": "#474746",
+              "on-tertiary-fixed": "#1c1b1b",
+              "on-primary": "#ffffff",
+              "secondary-container": "#ff7e55",
+              "on-secondary-fixed": "#3a0a00",
+              "outline-variant": "#c3c8c2",
+              "background": "#fbf9f2",
+              "primary-container": "#2e4036",
+              "on-surface": "#1b1c18",
+              "on-secondary-fixed-variant": "#842502",
+              "primary": "#182a21",
+              "outline": "#737874",
+              "on-primary-fixed-variant": "#394b40",
+              "on-error": "#ffffff",
+              "surface-container-low": "#f6f4ec",
+              "on-tertiary": "#ffffff"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "display": ["Cormorant Garamond"],
+              "body": ["Outfit"],
+              "data": ["IBM Plex Mono"],
+              "label": ["Space Grotesk"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Outfit', sans-serif; }
+        .magnetic-hover:hover { transform: scale(1.03); }
+        .glass-pill { backdrop-filter: blur(12px); }
+        .grain-overlay {
+            pointer-events: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 9999;
+            opacity: 0.04;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3Client%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased">
+<div class="grain-overlay"></div>
+<!-- Navigation -->
+<nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between max-w-5xl mx-auto rounded-full mt-6 px-6 py-2 bg-stone-50/60 dark:bg-stone-900/60 backdrop-blur-xl shadow-[0_20px_50px_rgba(24,42,33,0.04)]">
+<div class="text-2xl font-bold tracking-tight text-emerald-950 dark:text-emerald-50">Veltro</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-stone-600 dark:text-stone-400 font-medium hover:text-emerald-800 transition-colors" href="#">Features</a>
+<a class="text-stone-600 dark:text-stone-400 font-medium hover:text-emerald-800 transition-colors" href="#">Pricing</a>
+<a class="text-stone-600 dark:text-stone-400 font-medium hover:text-emerald-800 transition-colors" href="#">Use Cases</a>
+<a class="text-emerald-900 dark:text-emerald-400 font-bold border-b-2 border-orange-600" href="#">Blog</a>
+</div>
+<button class="bg-secondary text-white px-6 py-2 rounded-full font-bold hover:scale-[1.03] transition-transform duration-300 ease-out active:scale-95">Start Trial</button>
+</nav>
+<main class="pt-24">
+<!-- Hero Section -->
+<header class="h-[358px] flex flex-col items-center justify-center text-center px-6 bg-surface">
+<span class="font-data text-secondary text-sm tracking-[0.2em] mb-4">INSIGHTS</span>
+<h1 class="font-display italic text-6xl md:text-7xl text-primary leading-tight mb-4">The Veltro Blog</h1>
+<p class="font-body text-primary/50 text-lg md:text-xl max-w-2xl">
+                Perspectives on operations, maintenance strategy, and building software that works.
+            </p>
+</header>
+<!-- Category Filters -->
+<section class="bg-surface py-8 border-y border-outline-variant/10 overflow-hidden">
+<div class="max-w-7xl mx-auto px-6">
+<div class="flex items-center gap-3 overflow-x-auto pb-4 no-scrollbar">
+<button class="px-6 py-2 rounded-full font-body text-sm bg-primary text-surface-container whitespace-nowrap transition-all">All</button>
+<button class="px-6 py-2 rounded-full font-body text-sm border border-primary text-primary hover:bg-primary/5 whitespace-nowrap transition-all">Operations</button>
+<button class="px-6 py-2 rounded-full font-body text-sm border border-primary text-primary hover:bg-primary/5 whitespace-nowrap transition-all">Maintenance Strategy</button>
+<button class="px-6 py-2 rounded-full font-body text-sm border border-primary text-primary hover:bg-primary/5 whitespace-nowrap transition-all">Product Updates</button>
+<button class="px-6 py-2 rounded-full font-body text-sm border border-primary text-primary hover:bg-primary/5 whitespace-nowrap transition-all">Industry Insights</button>
+<button class="px-6 py-2 rounded-full font-body text-sm border border-primary text-primary hover:bg-primary/5 whitespace-nowrap transition-all">Best Practices</button>
+</div>
+</div>
+</section>
+<!-- Featured Post Section -->
+<section class="bg-surface py-20 px-6">
+<div class="max-w-7xl mx-auto">
+<div class="bg-surface-container-low rounded-[2rem] overflow-hidden flex flex-col md:flex-row shadow-[0_40px_100px_rgba(24,42,33,0.03)] group">
+<div class="md:w-1/2 overflow-hidden">
+<img alt="Modern Industrial Facility" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Modern industrial facility with warm sunset lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaWTxcQVNhlDEv-cj9HIwobA2zQJAF1HFJVNMoapaEGjOlNXq5tMg1ulPhauHIpC8SGR9fBute9yXm8n04ycketLcvTozRD8gyFI1edp4YgQfyWnBxG2gvtR6yuTomRRmr1NOmmVURd1bi3cFVO_Vp1oFPMgyIwvlk38eIFSXTRf2eDqAmn_nzpiFwuD83bRIUyKH1AT4M4yo8321CKvMSMLU4KMLcrcwHv_KSvP1laMrAQwC-_aZZmBNxkwY1siQQzmVcyVHiZJHj"/>
+</div>
+<div class="md:w-1/2 p-12 md:p-16 flex flex-col justify-center items-start">
+<span class="font-data text-xs text-secondary bg-secondary/10 px-4 py-1.5 rounded-full mb-8">MAINTENANCE STRATEGY</span>
+<h2 class="font-headline text-4xl md:text-5xl text-primary leading-tight mb-6">
+                            Beyond Fix-It: Transitioning to Predictive Operational Flow
+                        </h2>
+<p class="font-body text-primary/70 text-lg mb-8 leading-relaxed">
+                            Reactive maintenance is the silent killer of enterprise velocity. Learn how the world's most efficient facilities are using Veltro to anticipate failure before it disrupts the ledger.
+                        </p>
+<div class="flex items-center gap-6 mb-10">
+<div class="flex flex-col">
+<span class="font-data text-xs text-primary/60 uppercase">AUTHOR</span>
+<span class="font-body font-medium text-primary">Marcus Veltro</span>
+</div>
+<div class="w-px h-8 bg-outline-variant/30"></div>
+<div class="flex flex-col">
+<span class="font-data text-xs text-primary/60 uppercase">DATE</span>
+<span class="font-body font-medium text-primary">Oct 24, 2024</span>
+</div>
+</div>
+<a class="font-headline text-secondary group/link flex items-center gap-2 text-lg hover:gap-4 transition-all" href="#">
+                            Read more <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent Posts Grid -->
+<section class="bg-surface-container-lowest py-24 px-6">
+<div class="max-w-7xl mx-auto">
+<div class="flex justify-between items-end mb-16">
+<div>
+<span class="font-data text-secondary text-xs tracking-widest mb-2 block">LATEST ENTRIES</span>
+<h2 class="font-headline text-4xl text-primary">Recent Perspectives</h2>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+<!-- Post Card 1 -->
+<div class="group cursor-pointer">
+<div class="aspect-[4/3] rounded-t-[2rem] overflow-hidden mb-8">
+<img alt="Data Analytics Dashboard" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Minimalist data dashboard showing growth charts" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPnXVsvXuNGoqkgffH_FsRkd7oUeF5ooOmFMsYj72M-dcaO-cijDr3Z9x3tKSS3Fdc-vYl9zXcxhP-erEc-PVEmAqkPOWEHROVGEOBDJnEvz3E4ufQsyWxTKxtUc3ubWMzS4euRPpjK3PZES_ga2WLOYisoPcOw5jjQxUp4KIGSfkkJXSu8KNHKoR32UqYKUmTVXyQpTqXlTYsJBi1A_9TYcKw2w7kSFeEk6ecDurQYS_br03iI8lIupyP6gmmxy_rtaSmGQY35iPF"/>
+</div>
+<span class="font-data text-[10px] text-secondary tracking-widest uppercase mb-4 block">OPERATIONS</span>
+<h3 class="font-headline text-2xl text-primary mb-4 leading-snug group-hover:text-secondary transition-colors">The Metadata of Efficiency: Why Every Click Matters</h3>
+<p class="font-body text-primary/60 mb-6 line-clamp-2">How minor UI decisions in operational software directly impact the physical throughput of a team.</p>
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded-full bg-surface-container border border-outline-variant/20 flex items-center justify-center font-data text-[10px]">EV</div>
+<span class="font-data text-xs text-primary/40">Elena Vance · 4 min read</span>
+</div>
+</div>
+<!-- Post Card 2 -->
+<div class="group cursor-pointer">
+<div class="aspect-[4/3] rounded-t-[2rem] overflow-hidden mb-8">
+<img alt="Modern Office" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Clean architectural office space with concrete walls" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfnEn2Qdt9nZbx-zrqNOfj5CpBv1fmBpVotSkEV9jBkGDDqvJuQbyWDDLg3jdkN8-LyLesukQL09qJRoq5xPBGRltkWQ-3FmmuxJihm0dDWOwYtDFGAtlZORbX2CSkHuRyYjg0Y2VN-IlIhIFgSRQLpvjQ9dYJSm6-bdJnFRmlS2EbbfeD7ux_8IEM0nT-2PE-F3sMfJLuUKRCu2MPf9Ok8Vaoalp1c8u0EH_84tIxyLSM0fHZ8h4pT7J-lli78rJ1KzePynv4PoXV"/>
+</div>
+<span class="font-data text-[10px] text-secondary tracking-widest uppercase mb-4 block">PRODUCT UPDATES</span>
+<h3 class="font-headline text-2xl text-primary mb-4 leading-snug group-hover:text-secondary transition-colors">Veltro 2.4: Introducing The Architectural Ledger</h3>
+<p class="font-body text-primary/60 mb-6 line-clamp-2">Our latest update focuses on the tactile feeling of data entry and deep system integration.</p>
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded-full bg-surface-container border border-outline-variant/20 flex items-center justify-center font-data text-[10px]">DK</div>
+<span class="font-data text-xs text-primary/40">David K. · 6 min read</span>
+</div>
+</div>
+<!-- Post Card 3 -->
+<div class="group cursor-pointer">
+<div class="aspect-[4/3] rounded-t-[2rem] overflow-hidden mb-8">
+<img alt="Server Room" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Blue toned high-tech server room perspective" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQ5zGL7wiB07lF9dF8IUt48gb4xPCHVBFTOWYU3ONmLWRYxFzlQZ_oWA_Q--i8LksOU4K94_TJ0LRmt4tXrygfylcjpG_pm_6m2ltq4Ju1iub8mQdJJPoeoSYt900ct2ToTBrsT79nWwcjudCQRr0tieqF2CP1DFrKxCpYhTR-FvqvOMIpDGUy62LYScnl19jxOtVdsPtpZDqvZV09Noup2c2nfdMXVmXjyvz8lYnBpA5UIHFGLwaJEvvsGinIbAtl_A5qD0c73Tnw"/>
+</div>
+<span class="font-data text-[10px] text-secondary tracking-widest uppercase mb-4 block">INDUSTRY INSIGHTS</span>
+<h3 class="font-headline text-2xl text-primary mb-4 leading-snug group-hover:text-secondary transition-colors">Decentralizing Maintenance Responsibility</h3>
+<p class="font-body text-primary/60 mb-6 line-clamp-2">Empowering individual technicians with the data usually reserved for regional directors.</p>
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded-full bg-surface-container border border-outline-variant/20 flex items-center justify-center font-data text-[10px]">SM</div>
+<span class="font-data text-xs text-primary/40">Sarah Miller · 8 min read</span>
+</div>
+</div>
+</div>
+<div class="mt-20 flex justify-center">
+<button class="px-10 py-4 border border-primary text-primary font-headline rounded-full hover:bg-primary hover:text-white transition-all duration-300">
+                        Load more
+                    </button>
+</div>
+</div>
+</section>
+<!-- Newsletter Sub-section -->
+<section class="py-24 px-6 bg-primary text-surface-container-lowest">
+<div class="max-w-4xl mx-auto text-center">
+<h2 class="font-display italic text-5xl mb-6">Stay informed on the operational edge.</h2>
+<p class="font-body text-surface-container-lowest/60 text-lg mb-10 max-w-xl mx-auto">
+                    Weekly insights on system reliability and operational excellence, delivered directly to your inbox.
+                </p>
+<form class="flex flex-col md:flex-row gap-4 max-w-lg mx-auto">
+<input class="flex-1 bg-white/10 border-none rounded-full px-6 py-4 text-white placeholder:text-white/40 focus:ring-2 focus:ring-secondary/50" placeholder="Email Address" type="email"/>
+<button class="bg-secondary text-white px-8 py-4 rounded-full font-headline whitespace-nowrap hover:bg-secondary/90 transition-all">Subscribe</button>
+</form>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-neutral-900 dark:bg-black w-full px-12 py-20 flex flex-col md:flex-row justify-between items-start gap-12 rounded-t-[3rem] mt-20">
+<div class="max-w-xs">
+<div class="text-xl font-bold text-white mb-6">Veltro</div>
+<p class="font-body text-stone-400 text-sm leading-relaxed mb-8">
+                The Architectural Ledger for modern operations. Building the OS that helps high-velocity teams move faster and safer.
+            </p>
+<div class="flex items-center gap-4">
+<div class="w-2 h-2 rounded-full bg-secondary animate-pulse"></div>
+<span class="font-data text-[10px] text-stone-500 uppercase tracking-widest">© 2024 Veltro OS. System Operational.</span>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-12 md:gap-24">
+<div class="flex flex-col gap-4">
+<span class="font-data text-[10px] text-stone-500 uppercase tracking-widest mb-2">Platform</span>
+<a class="text-stone-400 hover:text-white transition-colors font-body text-sm" href="#">Features</a>
+<a class="text-stone-400 hover:text-white transition-colors font-body text-sm" href="#">Pricing</a>
+<a class="text-stone-400 hover:text-white transition-colors font-body text-sm" href="#">Use Cases</a>
+</div>
+<div class="flex flex-col gap-4">
+<span class="font-data text-[10px] text-stone-500 uppercase tracking-widest mb-2">Resources</span>
+<a class="text-white font-semibold font-body text-sm" href="#">Blog</a>
+<a class="text-stone-400 hover:text-white transition-colors font-body text-sm" href="#">Documentation</a>
+<a class="text-stone-400 hover:text-white transition-colors font-body text-sm" href="#">API Reference</a>
+</div>
+<div class="flex flex-col gap-4">
+<span class="font-data text-[10px] text-stone-500 uppercase tracking-widest mb-2">Legal</span>
+<a class="text-stone-400 hover:text-white transition-colors font-body text-sm" href="#">Privacy</a>
+<a class="text-stone-400 hover:text-white transition-colors font-body text-sm" href="#">Terms</a>
+<a class="text-stone-400 hover:text-white transition-colors font-body text-sm" href="#">Security</a>
+</div>
+</div>
+</footer>
+</body></html>

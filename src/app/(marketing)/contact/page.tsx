@@ -1,84 +1,167 @@
 import type { Metadata } from "next";
-import { Mail, MessageSquare, Phone } from "lucide-react";
+import { Mail, MessageSquare, Globe } from "lucide-react";
 import { siteConfig } from "@/config/site";
+import { SecondaryHero } from "@/components/marketing/SecondaryHero";
+import { CTASection } from "@/components/marketing/CTASection";
+import { ScrollReveal } from "@/components/animations/ScrollReveal";
+import { MagneticButton } from "@/components/ui/MagneticButton";
 
 export const metadata: Metadata = {
-  title: "Contact",
+  title: "Contact | Veltro",
   description: "Get in touch with the Veltro team — sales, support, or partnerships.",
 };
 
+const contacts = [
+  {
+    icon: Mail,
+    label: "Sales",
+    description: "Talk to our team about protocols and pricing.",
+    href: `mailto:${siteConfig.support.sales}`,
+    value: siteConfig.support.sales,
+    color: "moss",
+  },
+  {
+    icon: MessageSquare,
+    label: "Support",
+    description: "Need technical help? We're here for you.",
+    href: `mailto:${siteConfig.support.email}`,
+    value: siteConfig.support.email,
+    color: "clay",
+  },
+  {
+    icon: Globe,
+    label: "Partnerships",
+    description: "For ecosystem and integration inquiries.",
+    href: `mailto:partners@getveltro.com`,
+    value: "partners@getveltro.com",
+    color: "charcoal",
+  },
+];
+
 export default function ContactPage() {
   return (
-    <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-      <div className="mx-auto max-w-2xl text-center">
-        <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-          Get in touch
-        </h1>
-        <p className="mt-4 text-lg text-muted-foreground">
-          Have questions about Veltro? We'd love to hear from you.
-        </p>
-      </div>
+    <div className="min-h-screen bg-cream">
+      <SecondaryHero 
+        line1="Get in" 
+        line2="Touch." 
+        description="Have questions about the Veltro Operational OS? Our team is ready to help you find your operational rhythm."
+      />
 
-      <div className="mx-auto mt-16 grid max-w-4xl gap-8 lg:grid-cols-3">
-        <div className="rounded-xl border border-border bg-card p-6 text-center">
-          <Mail className="mx-auto h-8 w-8 text-primary" />
-          <h3 className="mt-4 font-semibold text-foreground">Sales</h3>
-          <p className="mt-2 text-sm text-muted-foreground">Talk to our sales team about plans and pricing.</p>
-          <a href={`mailto:${siteConfig.support.sales}`} className="mt-4 inline-block text-sm font-medium text-primary hover:underline">
-            {siteConfig.support.sales}
-          </a>
-        </div>
-        <div className="rounded-xl border border-border bg-card p-6 text-center">
-          <MessageSquare className="mx-auto h-8 w-8 text-primary" />
-          <h3 className="mt-4 font-semibold text-foreground">Support</h3>
-          <p className="mt-2 text-sm text-muted-foreground">Need help? Our support team is here for you.</p>
-          <a href={`mailto:${siteConfig.support.email}`} className="mt-4 inline-block text-sm font-medium text-primary hover:underline">
-            {siteConfig.support.email}
-          </a>
-        </div>
-        <div className="rounded-xl border border-border bg-card p-6 text-center">
-          <Phone className="mx-auto h-8 w-8 text-primary" />
-          <h3 className="mt-4 font-semibold text-foreground">Demo</h3>
-          <p className="mt-2 text-sm text-muted-foreground">Schedule a live demo with our team.</p>
-          <a href="/demo" className="mt-4 inline-block text-sm font-medium text-primary hover:underline">
-            Book a demo
-          </a>
-        </div>
-      </div>
+      <section className="mx-auto max-w-7xl px-6 py-24 lg:py-32">
+        <div className="grid gap-16 lg:grid-cols-2">
+          {/* Left -- contact info cards */}
+          <div className="space-y-6">
+            <ScrollReveal>
+              <div className="mb-10">
+                <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-charcoal/30">
+                  // channels
+                </span>
+                <h2 className="mt-4 font-heading text-3xl font-bold text-charcoal">
+                  Direct Lines
+                </h2>
+              </div>
+            </ScrollReveal>
 
-      {/* Contact form placeholder */}
-      <div className="mx-auto mt-16 max-w-xl">
-        <form className="space-y-6">
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div>
-              <label htmlFor="firstName" className="block text-sm font-medium text-foreground">First name</label>
-              <input id="firstName" type="text" className="mt-1 block w-full rounded-lg border border-border bg-background px-3 py-2 text-sm" />
+            {contacts.map((contact, i) => (
+              <ScrollReveal key={contact.label} delay={i * 0.1}>
+                <div className="group rounded-[2rem] border border-cream-300 bg-white p-8 transition-all duration-500 hover:shadow-xl hover:-translate-y-1">
+                  <div className="flex items-start gap-6">
+                    <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-${contact.color}/10 text-${contact.color}`}>
+                      <contact.icon className="h-5 w-5" strokeWidth={1.5} />
+                    </div>
+                    <div>
+                      <h3 className="font-heading text-lg font-bold text-charcoal">
+                        {contact.label}
+                      </h3>
+                      <p className="mt-2 font-body text-sm leading-relaxed text-charcoal/60">
+                        {contact.description}
+                      </p>
+                      <a
+                        href={contact.href}
+                        className="mt-4 inline-block font-mono text-sm font-semibold text-clay transition-colors hover:text-clay/80"
+                      >
+                        {contact.value}
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+
+          {/* Right -- form */}
+          <ScrollReveal delay={0.2}>
+            <div className="rounded-[3rem] bg-charcoal p-8 text-cream shadow-2xl sm:p-12">
+              <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-cream/30">
+                // concierge
+              </span>
+              <h2 className="mt-4 font-heading text-3xl font-bold text-cream">
+                Send a Message
+              </h2>
+              
+              <form className="mt-10 space-y-6" action="#">
+                <div className="grid gap-6 sm:grid-cols-2">
+                  <div className="flex flex-col gap-2">
+                    <label htmlFor="firstName" className="font-mono text-[10px] uppercase tracking-wider text-cream/40">
+                      First Name
+                    </label>
+                    <input
+                      id="firstName"
+                      name="firstName"
+                      type="text"
+                      className="rounded-full border border-cream/10 bg-cream/5 px-5 py-4 font-body text-sm text-cream transition-all duration-300 focus:border-moss focus:outline-none focus:ring-1 focus:ring-moss"
+                      placeholder="Jane"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <label htmlFor="lastName" className="font-mono text-[10px] uppercase tracking-wider text-cream/40">
+                      Last Name
+                    </label>
+                    <input
+                      id="lastName"
+                      name="lastName"
+                      type="text"
+                      className="rounded-full border border-cream/10 bg-cream/5 px-5 py-4 font-body text-sm text-cream transition-all duration-300 focus:border-moss focus:outline-none focus:ring-1 focus:ring-moss"
+                      placeholder="Doe"
+                    />
+                  </div>
+                </div>
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="email" className="font-mono text-[10px] uppercase tracking-wider text-cream/40">
+                    Work Email
+                  </label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    className="rounded-full border border-cream/10 bg-cream/5 px-5 py-4 font-body text-sm text-cream transition-all duration-300 focus:border-moss focus:outline-none focus:ring-1 focus:ring-moss"
+                    placeholder="jane@company.com"
+                  />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="message" className="font-mono text-[10px] uppercase tracking-wider text-cream/40">
+                    Your Message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={4}
+                    className="rounded-[2rem] border border-cream/10 bg-cream/5 px-5 py-4 font-body text-sm text-cream transition-all duration-300 focus:border-moss focus:outline-none focus:ring-1 focus:ring-moss resize-none"
+                    placeholder="Tell us about your operation..."
+                  />
+                </div>
+                <div className="pt-4">
+                  <MagneticButton type="submit" variant="clay" size="lg" className="w-full">
+                    Initialize Contact
+                  </MagneticButton>
+                </div>
+              </form>
             </div>
-            <div>
-              <label htmlFor="lastName" className="block text-sm font-medium text-foreground">Last name</label>
-              <input id="lastName" type="text" className="mt-1 block w-full rounded-lg border border-border bg-background px-3 py-2 text-sm" />
-            </div>
-          </div>
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-foreground">Work email</label>
-            <input id="email" type="email" className="mt-1 block w-full rounded-lg border border-border bg-background px-3 py-2 text-sm" />
-          </div>
-          <div>
-            <label htmlFor="company" className="block text-sm font-medium text-foreground">Company</label>
-            <input id="company" type="text" className="mt-1 block w-full rounded-lg border border-border bg-background px-3 py-2 text-sm" />
-          </div>
-          <div>
-            <label htmlFor="message" className="block text-sm font-medium text-foreground">Message</label>
-            <textarea id="message" rows={4} className="mt-1 block w-full rounded-lg border border-border bg-background px-3 py-2 text-sm" />
-          </div>
-          <button
-            type="submit"
-            className="w-full rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Send message
-          </button>
-        </form>
-      </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      <CTASection />
     </div>
   );
 }
