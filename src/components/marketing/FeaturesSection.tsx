@@ -41,10 +41,10 @@ export function FeaturesSection() {
     >
       <div className="mx-auto max-w-6xl">
         <span className="mb-3 block font-mono text-xs text-charcoal/50">
-          // capabilities
+          // platform
         </span>
         <h2 className="mb-16 font-heading text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
-          Functional Artifacts
+          Core Capabilities
         </h2>
 
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3">
